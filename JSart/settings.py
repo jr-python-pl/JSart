@@ -127,7 +127,7 @@ STATIC_URL = '/static/'
 LOGIN_URL = '/login'
 
 # MEDIA_URL = '/photos/'
-# LOGIN_REDIRECT_URL = '/...../'
-# LOGOUT_REDIRECT_URL = '/...../'
+LOGIN_REDIRECT_URL = '/main'
+LOGOUT_REDIRECT_URL = '/main'
 # MEDIA_ROOT = 'media/'
 

@@ -15,7 +15,6 @@ class User(AbstractUser):
 class Project(models.Model):
     title = models.CharField(max_length=128, verbose_name="Tytuł projektu")
     description = models.TextField(verbose_name="Opis projektu", blank=True)
-    adding_date = models.DateTimeField(auto_now_add=True, verbose_name="Data/godzina dodania")
     last_modified = models.DateTimeField(auto_now=True, verbose_name="Data/godzina edycji")
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="Użytkownik")
 
