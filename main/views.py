@@ -13,11 +13,11 @@ class Home(View):
 
     def get(self, request):
         return render(request, 'main/home.html')
-    
+
 class Authors(View):
 
     def get(self, request):
-        return render(request, 'main/authors.html' ,{'authors':User.objects.all()})    
+        return render(request, 'main/authors.html' ,{'authors':User.objects.all()})
 
 class Portfolio(View):
 
@@ -53,7 +53,7 @@ class About(View):
         return render(request, 'main/contact.html')
 
 
-class ProjectForm(View):
+class ProjectFormView(View):
 
     def get(self, request):
         form = ProjectForm()
