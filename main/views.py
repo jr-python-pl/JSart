@@ -39,7 +39,7 @@ class ProjectView(View):
 class Contact(View):
 
     def get(self, request):
-        
+
         return render(request, 'main/contact.html')
 
 
@@ -54,6 +54,7 @@ class ProjectForm(View):
 
     def get(self, request):
         form = ProjectForm()
+        print(form)
         return render(request, 'profile/add_project.html', {'form': form})
     def post(self, request):
         form = ProjectForm(request.POST)
