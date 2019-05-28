@@ -20,6 +20,8 @@
             <!-- splitting query in two -- modulo function - registered filter in in templatetags/new_tags.py -->
                 {% if author.image %}
                     <p><img alt = "author photo" src="{{ author.image.url}}" height="200"/></p></br>
+                    {%else%}
+                    <img src="{% static 'main/img/default_user_pic.jpeg' %}" alt="user pic">
                 {%endif%}
                 <p>{{author.username}}</p>
                 
@@ -36,6 +38,10 @@
                <!-- splitting query in two -- modulo function - registered filter in in templatetags/new_tags.py -->
                {% if author.image %}
                   <p>  <img alt = "author photo" src="{{ author.image.url}}" width="200"/></p></br>
+                  {%else%}
+                  <img src="{% static 'main/img/default_user_pic.jpeg' %}" alt="user pic">
+
+
                   {% endif %}  
             <p>{{author.username}}</p>
             
