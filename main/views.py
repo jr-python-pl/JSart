@@ -9,15 +9,16 @@ from django.http import HttpResponse
 from main.models import User, Project
 from main.forms import MainUserCreationForm,ProjectForm
 
+
 class Home(View):
 
     def get(self, request):
         return render(request, 'main/home.html')
-    
+
 class Authors(View):
 
     def get(self, request):
-        return render(request, 'main/authors.html' ,{'authors':User.objects.all()})    
+        return render(request, 'main/authors.html' ,{'authors':User.objects.all()})
 
 class Portfolio(View):
 
@@ -42,7 +43,7 @@ class ProjectView(View):
 class Contact(View):
 
     def get(self, request):
-        
+
         return render(request, 'main/contact.html')
 
 
@@ -53,10 +54,11 @@ class About(View):
         return render(request, 'main/contact.html')
 
 
-class ProjectForm(View):
+class ProjectFormView(View):
 
     def get(self, request):
         form = ProjectForm()
+        print(form)
         return render(request, 'profile/add_project.html', {'form': form})
     def post(self, request):
         form = ProjectForm(request.POST)
