@@ -50,16 +50,12 @@
                   <li class="nav-item"><a class="item-anchor" href="{% url 'main:about' %}">About</a></li>
 
                   {% if request.user.is_authenticated %}
-                  <li class="nav-item">
-
-
-                  <a href="{% url 'main:logout' %}"> Log out </a>  </li>
-
+                  <li class="nav-item"><a class="item-anchor" href="{% url 'main:profile' %}">Profile</a></li>
                   <li class="nav-item"> Logged in : {{ request.user }}</a></li>
-                  <li class="nav-item">
+                  <li class="nav-item"><a href="{% url 'main:logout' %}"> Log out </a>  </li>
 
-                      <a href="{% url 'main:profile' %}">Profile</a>
-                    </li>
+                  
+                  
 
 
                   {% else %}

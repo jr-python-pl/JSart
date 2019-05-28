@@ -2,28 +2,56 @@
 {% load static %}
 {% block content %}
 
-</br></br></br></br></br></br></br></br>
+</br></br></br></br></br></br>
+<h1>Authors of JS code </h1>
 
-    <h1>Authors' Projects</h1>
 
-    <table border="1">
-        <tr>
-            <th>Username</th>
-            <th>Projects</th>
-        </tr>
-        {% for a in authors %}
-            <tr>
-                <td>{{a.username}}</td>
-                <td>
-                    {% for p in a.project_set.all %}
-                    <a href="{% url 'main:project_view' p.id %}">{{p.title}}</a>,
-                    {% endfor %}
-                </td>
+    
+</br>
 
-            </tr>
+    
+        {% for author in authors %}
+            {%if forloop.counter|modulo:2 ==0 %}
+                <div class="span12">
+                    <div class="col-md-6 no-gutter text-center fill">
+        
+
+
+                {{author.username}}
+                <img src="{{ author.image_url|default_if_none:'#' }}" width="300"/>
+                
+                    <!-- {% for project in author.project_set.all %}
+                    <a href="{% url 'main:project_view' project.id %}">{{p.title}}</a>,
+                    {% endfor %} -->
+           
+                </div> 
+            {% endif %}
+            {%if forloop.counter|modulo:2 !=0 %}
+            <div class="span12">
+                <div class="col-md-6 no-gutter text-center fill">
+    
+
+
+            {{author.username}}
+            <img src="{{ author.image_url|default_if_none:'#' }}" width="300"/>
+            
+                <!-- {% for project in author.project_set.all %}
+                <a href="{% url 'main:project_view' project.id %}">{{p.title}}</a>,
+                {% endfor %} -->
+       
+            </div> 
+        {% endif %}   
+
+
+
+
+
+
+
         {% endfor %}
 
-    </table>
+
+    <div style="clear:both;"></div>
 
 
 {% endblock %}
