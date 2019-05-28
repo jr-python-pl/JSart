@@ -1,19 +1,29 @@
 {% extends 'main/base.html' %}
 
 
-{% block title %}Logowanie{% endblock %}
+
 
 {% block content %}
 
+</br></br></br>
+</br></br></br>
 
-
+  <div class="container">
+     
+           <h1>
+             Add new Project ....
+            </h1>
 
 
 
                   <form method="POST">
                     {% csrf_token %}
-                    {{form}}
+                    {{form.as_p}}
+                    <button type="submit">Add new one ...</button>
                     </form>
-
+                  
+                  <div class="container" style="width: 400px">
+                
+        
 
 {% endblock  %}

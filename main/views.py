@@ -9,6 +9,7 @@ from django.http import HttpResponse
 from main.models import User, Project
 from main.forms import MainUserCreationForm,ProjectForm
 
+
 class Home(View):
 
     def get(self, request):

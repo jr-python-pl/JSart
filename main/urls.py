@@ -18,7 +18,7 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(), {'next_page': ''}, name="logout"),
     path('signup/', SignUPView.as_view(), name="signup"),
 
-    path('profile/add_project/', ProjectFormView.as_view(), name="add_project"),
+    path('add_project/', ProjectFormView.as_view(), name="add_project"),
     path('profile/', Profile.as_view(), name="profile"),
 
     #authors
