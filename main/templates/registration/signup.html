@@ -12,17 +12,17 @@
                  Sign in to publish your work , <br>
                  Be able to join contests !
 
-                 <h2 class="info-title">Rejestracja</h2>
+                 <h2 class="info-title">Sign in</h2>
                 <h4>
-                 <form method="post">
+                 <form method="post" enctype="multipart/form-data">
                    {% csrf_token %}
                    {% for field in form %}
                      <p>
                        {{ field.label_tag }}<br>
-                       {{ field }}
-                       {% if field.help_text %}
+                       {{ field }}</p>
+                       <!-- {% if field.help_text %}
                          <small style="color: grey">{{ field.help_text }}</small>
-                       {% endif %}
+                       {% endif %} -->
                        {% for error in field.errors %}
                          <p style="color: red">{{ error }}</p>
                        {% endfor %}

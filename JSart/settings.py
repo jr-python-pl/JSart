@@ -18,7 +18,7 @@ with open('/etc/JSartConfig/JSartConfig.json') as config_file:
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
+MEDIA_URL = '/media/'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
@@ -126,7 +126,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 LOGIN_URL = '/login'
 
-# MEDIA_URL = '/photos/'
+MEDIA_URL = '/media/'
 LOGIN_REDIRECT_URL = '/main'
 LOGOUT_REDIRECT_URL = '/main'
 # MEDIA_ROOT = 'media/'
