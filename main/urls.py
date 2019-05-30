@@ -4,7 +4,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 
-from main.views import Home, SignUPView , Contact , About , Portfolio ,Project,ProjectView,ProjectFormView,Profile,Authors
+from main.views import Home, SignUPView , ContactEmail , About , Portfolio ,Project,ProjectView,ProjectFormView,Profile,Authors, SuccessView
 
 
 app_name = 'main'
@@ -13,7 +13,8 @@ urlpatterns = [
     path('project/<int:id>', ProjectView.as_view(), name="project_view"),
     path('portfolio/', Portfolio.as_view(), name="portfolio"),
     path('about/', About.as_view(), name="about"),
-    path('contact/', Contact.as_view(), name="contact"),
+    path('contact/', ContactEmail.as_view(), name="contact"),
+    path('success/', SuccessView.as_view(), name='success'),
     path('login/', auth_views.LoginView.as_view(), name="login"),
     path('logout/', auth_views.LogoutView.as_view(), {'next_page': ''}, name="logout"),
     path('signup/', SignUPView.as_view(), name="signup"),
