@@ -24,7 +24,7 @@
                     <img src="{% static 'main/img/default_user_pic.jpeg' %}" alt="user pic">
                 {%endif%}
                 <p> <a href=" {% url 'main:profile' author.username %}">{{author.username}}</a></p>
-               <p>{{author.id}}</p>
+               
                 
             {% endif %}
            
