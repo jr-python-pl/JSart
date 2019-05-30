@@ -16,15 +16,15 @@
     
         {% for author in authors %}
         
-            {%if forloop.counter|modulo:2 == 0 %} 
+            {%if author.id|modulo:2 == 0 %} 
             <!-- splitting query in two -- modulo function - registered filter in in templatetags/new_tags.py -->
                 {% if author.image %}
-                    <p><img alt = "author photo" src="{{ author.image.url}}" height="200"/></p></br>
+                    <p><img alt = "author photo" src="{{ author.image.url}}" height="225"/></p></br>
                     {%else%}
                     <img src="{% static 'main/img/default_user_pic.jpeg' %}" alt="user pic">
                 {%endif%}
-                <p>{{author.username}}</p>
-                <p>{{author.id}}</p>
+                <p> <a href=" {% url 'main:profile' author.username %}">{{author.username}}</a></p>
+               <p>{{author.id}}</p>
                 
             {% endif %}
            
@@ -34,18 +34,18 @@
             <div class="span12">
                 <div class="col-md-6 no-gutter text-center fill">
             {% for author in authors %}
-            {%if forloop.counter|modulo:2 != 0 %}
+            {%if author.id|modulo:2 != 0 %}
             
                <!-- splitting query in two -- modulo function - registered filter in in templatetags/new_tags.py -->
                {% if author.image %}
-                  <p>  <img alt = "author photo" src="{{ author.image.url}}" width="200"/></p></br>
+                  <p>  <img alt = "author photo" src="{{ author.image.url}}" height="225"/></p></br>
                   {%else%}
                   <img src="{% static 'main/img/default_user_pic.jpeg' %}" alt="user pic">
 
 
                   {% endif %}  
-            <p>{{author.username}}</p>
-            <p>{{author.id}}</p>
+            <p><a href=" {% url 'main:profile' author.username %}">{{author.username}}</a></p>
+            
                 
             
         {% endif %}   

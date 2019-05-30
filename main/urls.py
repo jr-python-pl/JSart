@@ -19,7 +19,7 @@ urlpatterns = [
     path('signup/', SignUPView.as_view(), name="signup"),
 
     path('add_project/', ProjectFormView.as_view(), name="add_project"),
-    path('profile/', Profile.as_view(), name="profile"),
+    path('profile/<username>', Profile.as_view(), name="profile"),
 
     #authors
     path('authors/', Authors.as_view(), name="authors"),
