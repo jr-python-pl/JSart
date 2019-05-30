@@ -28,9 +28,9 @@ class Portfolio(View):
 
 class Profile(View):
 
-    def get(self, request):
-        user = request.user
-        return render(request, 'profile/profile.html' ,{'projects':Project.objects.filter(user=user)})
+    def get(self, request, username):
+        # user = request.user
+        return render(request, 'profile/profile.html' ,{'author':User.objects.get(username=username)})
 
 
 class ProjectView(View):
