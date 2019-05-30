@@ -39,8 +39,6 @@ class ProjectView(View):
         return render(request, 'main/project_view.html',{'projects':Project.objects.get(id=id)})
 
 
-
-
 class ContactEmail(View):
 
     def get(self, request):
@@ -49,7 +47,6 @@ class ContactEmail(View):
 
     def post(self, request):
         form = ContactForm(request.POST)
-
         if form.is_valid():
             subject = form.cleaned_data['subject']
             email = form.cleaned_data['email']
