@@ -1,29 +1,70 @@
 {% extends "main/base.html" %}
 {% load static %}
+{% load new_tags %}
+   <!-- registered new filter -->
 {% block content %}
 
-</br></br></br></br></br></br></br></br>
+</br></br></br></br></br></br>
+<div class="container">
+<h1>Authors of JS code </h1>
 
-    <h1>Authors' Projects</h1>
 
-    <table border="1">
-        <tr>
-            <th>Username</th>
-            <th>Projects</th>
-        </tr>
-        {% for a in authors %}
-            <tr>
-                <td>{{a.username}}</td>
-                <td>
-                    {% for p in a.project_set.all %}
-                    <a href="{% url 'main:project_view' p.id %}">{{p.title}}</a>,
-                    {% endfor %}
-                </td>
+    
+</br>
+<div class="span12">
+    <div class="col-md-6 no-gutter text-center fill">
+    
+        {% for author in authors %}
+        
+            {%if author.id|modulo:2 == 0 %} 
+            <!-- splitting query in two -- modulo function - registered filter in in templatetags/new_tags.py -->
+                {% if author.image %}
+                    <p><img alt = "author photo" src="{{ author.image.url}}" height="225"/></p></br>
+                    {%else%}
+                    <img src="{% static 'main/img/default_user_pic.jpeg' %}" alt="user pic">
+                {%endif%}
+                <p> <a href=" {% url 'main:profile' author.username %}">{{author.username}}</a></p>
+               
+                
+            {% endif %}
+           
+            {% endfor %}
+        </div>
+    </div>
+            <div class="span12">
+                <div class="col-md-6 no-gutter text-center fill">
+            {% for author in authors %}
+            {%if author.id|modulo:2 != 0 %}
+            
+               <!-- splitting query in two -- modulo function - registered filter in in templatetags/new_tags.py -->
+               {% if author.image %}
+                  <p>  <img alt = "author photo" src="{{ author.image.url}}" height="225"/></p></br>
+                  {%else%}
+                  <img src="{% static 'main/img/default_user_pic.jpeg' %}" alt="user pic">
 
-            </tr>
-        {% endfor %}
 
-    </table>
+                  {% endif %}  
+            <p><a href=" {% url 'main:profile' author.username %}">{{author.username}}</a></p>
+            
+                
+            
+        {% endif %}   
+
+              
+
+            {% endfor %}
+        </div>
+    </div>
+
+
+
+
+
+       
+
+
+    <div style="clear:both;"></div>
+        </div>
 
 
 {% endblock %}

@@ -30,7 +30,7 @@ SECRET_KEY = config['SECRET_KEY']
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 # Application definition
 
@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'main'
+    'main',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -130,3 +131,5 @@ MEDIA_URL = '/media/'
 LOGIN_REDIRECT_URL = '/main'
 LOGOUT_REDIRECT_URL = '/main'
 # MEDIA_ROOT = 'media/'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

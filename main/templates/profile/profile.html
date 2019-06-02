@@ -4,23 +4,25 @@
 
 <section>
    <div class="container">
-</br></br></br></br></br></br></br></br>
+</br></br>
+{% if request.user.is_authenticated %}
 <h2>  <a href=" {% url 'main:add_project' %} ">Add new project</a> </h2>
+{% endif %}
+
+{{author.username}}
+
+{% if author.image %}
+                    <p><img alt = "author photo" src="{{ author.image.url}}" height="225"/></p>
+   {%else%}
+   <p><img src="{% static 'main/img/default_user_pic.jpeg' %}" alt="user pic"></p>
+{%endif%}
+</br>
+{{author.cv}}
+
+      
 
 
-      {%for project in projects%}
-       <!-- <p>Author : {{project.user}}</p> -->
-       </p>Title : {{project.title}}</p>
-      <a href=" {% url 'main:project_view' project.id %}"><img alt="project thumbnail" src={{project.thumbnail.url}} width="300"/></a>
-
-
-       </br></br>
-
-
-
-
-      {%endfor%}
-
+     
     </div>
 
  </section>

@@ -1,5 +1,5 @@
 {% extends 'main/base.html' %}
-
+{% load crispy_forms_tags %}
 
 
 
@@ -18,7 +18,7 @@
 
                   <form method="POST">
                     {% csrf_token %}
-                    {{form.as_p}}
+                    {{form|crispy}}
                     <button type="submit">Add new one ...</button>
                     </form>
                   

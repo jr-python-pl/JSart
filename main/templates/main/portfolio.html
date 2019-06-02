@@ -1,26 +1,58 @@
 {% extends "main/base.html" %}
 {% load static %}
 {% block content %}
-
+{% load new_tags %}
 
 </br></br></br>
-<section>
-   <div class="container">
-      {%for project in projects%}
-       <p>Author : {{project.user}}</p>
-       </p>Title : {{project.title}}</p>
-      <a href=" {% url 'main:project_view' project.id %}"><img alt="project thumbnail" src={{project.thumbnail.url}} width="300"/></a>
+
+<div class="span12">
+    <div class="col-md-6 no-gutter text-center fill">
+      </br></br></br>
+    
+        {% for project in projects %}
+        
+            {%if project.id|modulo:2 == 0 %} 
+            <!-- splitting query in two -- modulo function - registered filter in in templatetags/new_tags.py -->
+            <p>Author : {{project.user}}</p>
+         </p>Title : {{project.title}}</p>
+        <a href=" {% url 'main:project_view' project.id %}"><img alt="project thumbnail" src={{project.thumbnail.url}} width="400"/></a>
+      </br></br>
+
+  
+      
+        {% endif %}
+        
+           
+        {% endfor %}
+      </div>
+   </div>
+         <div class="span12">
+            <div class="col-md-6 no-gutter text-center fill">
+               </br></br></br>
+  
+         {% for project in projects %}
+        
+         {%if project.id|modulo:2 != 0 %} 
+         <!-- splitting query in two -- modulo function - registered filter in in templatetags/new_tags.py -->
+         <p>Author : {{project.user}}</p>
+      </p>Title : {{project.title}}</p>
+     <a href=" {% url 'main:project_view' project.id %}"><img alt="project thumbnail" src={{project.thumbnail.url}} width="400"/></a>
+   </br></br>
+   
+     {% endif %}
+        
+     {% endfor %}
+   </div>
+</div>
+     
 
 
-       </br></br>
 
 
 
 
-      {%endfor%}
+       <div style="clear:both;"></div>
+      </div>  
 
-    </div>
-
-   </section>
-
+   
 {% endblock %}
