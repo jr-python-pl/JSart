@@ -7,7 +7,8 @@ from django.views.generic import CreateView, UpdateView, DeleteView, DetailView,
 from django.http import HttpResponse
 
 from main.models import User, Project
-from main.forms import MainUserCreationForm,ProjectForm
+from main.forms import MainUserCreationForm,ProjectForm, ContactForm
+from django.core.mail import send_mail, BadHeaderError
 
 
 class Home(View):
@@ -38,14 +39,31 @@ class ProjectView(View):
         return render(request, 'main/project_view.html',{'projects':Project.objects.get(id=id)})
 
 
-
-
-class Contact(View):
+class ContactEmail(View):
 
     def get(self, request):
+        form = ContactForm()
+        return render(request, 'main/contact.html', {'form': form})
 
-        return render(request, 'main/contact.html')
+    def post(self, request):
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            subject = form.cleaned_data['subject']
+            email = form.cleaned_data['email']
+            message = form.cleaned_data['message']
+            try:
+                send_mail(subject, message, email, ['admin@example.com', 'innyemail@example.com'])
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+            return redirect(reverse('main:success'))
 
+        return render(request, 'main/contact.html', {'form': form})
+
+
+class SuccessView(View):
+
+    def get(self, request):
+        return HttpResponse('Success! Thank you for your message.')
 
 
 class About(View):
