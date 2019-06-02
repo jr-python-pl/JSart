@@ -32,6 +32,12 @@ class Profile(View):
         # user = request.user
         return render(request, 'profile/profile.html' ,{'author':User.objects.get(username=username)})
 
+class ProfileEdit(View):
+
+    def get(self, request, username):
+        # user = request.user
+        return render(request, 'profile/profile_edit.html' ,{'author':User.objects.get(username=username)})
+
 
 class ProjectView(View):
 

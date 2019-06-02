@@ -1,0 +1,34 @@
+{% extends "main/base.html" %}
+{% load static %}
+{% block content %}
+
+<section>
+   <div class="container">
+</br></br>
+{% if request.user.is_authenticated %}
+<h2>  <a href=" {% url 'main:add_project' %} ">Add new project</a> </h2>
+
+{% endif %}
+
+{{author.username}}
+
+{% if author.image %}
+<p><img alt = "author photo" src="{{ author.image.url}}" height="225"/></p>
+{%else%}
+<p><img src="{% static 'main/img/default_user_pic.jpeg' %}" alt="user pic"></p>
+{{author.cv}}
+{%endif%}
+
+</br>
+
+
+      
+
+
+     
+    </div>
+
+ </section>
+
+
+{% endblock %}
