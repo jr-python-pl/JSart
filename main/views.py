@@ -33,10 +33,25 @@ class Profile(View):
         return render(request, 'profile/profile.html' ,{'author':User.objects.get(username=username)})
 
 class ProfileEdit(View):
+    
+    
 
     def get(self, request, username):
-        # user = request.user
-        return render(request, 'profile/profile_edit.html' ,{'author':User.objects.get(username=username)})
+        
+        user = request.user
+        initial_data = {
+            "cv" : user.cv,
+            "image":user.image,
+            "email":user.email
+        }
+       
+        form = MainUserCreationForm(initial=initial_data)
+        return render(request, 'profile/profile_edit.html' ,{'author':User.objects.get(username=username),'form':form})
+    def post(self, request):
+        form = MainUserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return render(request, 'profile/profile_edit.html' ,{'author':User.objects.get(username=username),'form':form})
 
 
 class ProjectView(View):
@@ -82,7 +97,6 @@ class ProjectFormView(View):
 
     def get(self, request):
         form = ProjectForm()
-        print(form)
         return render(request, 'profile/add_project.html', {'form': form})
     def post(self, request):
         form = ProjectForm(request.POST)
