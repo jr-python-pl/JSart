@@ -4,7 +4,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 
-from main.views import Home, SignUPView , ContactEmail , About , Portfolio ,Project,ProjectView,ProjectFormView,Profile,Authors, SuccessView
+from main.views import Home, SignUPView , ContactEmail , About , Portfolio ,Project,ProjectView,ProjectFormView,Profile,Authors,SuccessView,ProfileEdit
 
 
 app_name = 'main'
@@ -21,7 +21,7 @@ urlpatterns = [
 
     path('add_project/', ProjectFormView.as_view(), name="add_project"),
     path('profile/<username>', Profile.as_view(), name="profile"),
-
+    path('profile/<username>/edit', ProfileEdit.as_view(), name="profile_edit"),
     #authors
     path('authors/', Authors.as_view(), name="authors"),
 
