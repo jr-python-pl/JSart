@@ -21,12 +21,20 @@ class Project(models.Model):
     description = models.TextField(verbose_name="description", blank=True)
     body = models.TextField(verbose_name="script body" ,null =False , blank=False )
     thumbnail = models.ImageField(upload_to='thumbs/', blank = False , null = False )
-
-
-
+    average_rating = models.DecimalField(default=0, max_digits=4, decimal_places=2)
 
     def __str__(self):
         return f'Project: {self.title}, Author: {self.user}'
+
+    def mean_method(self):
+        suma = 0
+        for pr in self.rating_set.all():
+            suma += pr.rating
+        try:
+            suma / self.rating_set.all().count()
+        except ZeroDivisionError:
+            return 0
+        return suma / self.rating_set.all().count()
 
 
 # class Comment(models.Model):
