@@ -59,7 +59,8 @@ class ProfileEdit(View):
 class ProjectView(View):
 
     def get(self, request, id):
-        return render(request, 'main/project_view.html',{'projects':Project.objects.get(id=id)})
+        form = RatingForm()
+        return render(request, 'main/project_view.html',{'projects':Project.objects.get(id=id), 'form' : form})
 
     def post(self, request, id):
         project1 = Project.objects.get(id=id)
