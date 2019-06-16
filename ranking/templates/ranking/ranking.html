@@ -16,8 +16,7 @@
          <p>Author : {{p.user}} </p>
          <p>Project : <a href=" {% url 'main:project_view' p.id %}">{{p.title}}</a> </p>
 
-         <p>Rating pole : {{p.average_rating}} </p>
-         <p>Rating metoda : {{p.mean_method}} </p>
+         <p>Rating : {{p.average_rating}} </p>
          <p>----------</p>
        {% endfor %}
 
