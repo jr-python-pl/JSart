@@ -11,5 +11,20 @@
 {{projects.body|safe}}
 
 {% endif %}
+
+{% if vote %}
+<br>
+<p>Your vote was sent</p>
+{% else %}
+  <h4>
+    Rating
+  </h4>
+  <form action="#" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Rate this project</button>
+  </form>
+
+{% endif %}
   </body>
 </html>
