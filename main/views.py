@@ -9,6 +9,8 @@ from django.http import HttpResponse
 from main.models import User, Project
 from main.forms import MainUserCreationForm,ProjectForm, ContactForm
 from django.core.mail import send_mail, BadHeaderError
+from ranking.forms import RatingForm
+from ranking.models import Rating
 
 
 class Home(View):
@@ -32,11 +34,48 @@ class Profile(View):
         # user = request.user
         return render(request, 'profile/profile.html' ,{'author':User.objects.get(username=username)})
 
+class ProfileEdit(View):
+    
+    
+
+    def get(self, request, username):
+        
+        user = request.user
+        initial_data = {
+            "cv" : user.cv,
+            "image":user.image,
+            "email":user.email
+        }
+       
+        form = MainUserCreationForm(initial=initial_data)
+        return render(request, 'profile/profile_edit.html' ,{'author':User.objects.get(username=username),'form':form})
+    def post(self, request):
+        form = MainUserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return render(request, 'profile/profile_edit.html' ,{'author':User.objects.get(username=username),'form':form})
+
 
 class ProjectView(View):
 
     def get(self, request, id):
-        return render(request, 'main/project_view.html',{'projects':Project.objects.get(id=id)})
+        form = RatingForm()
+        return render(request, 'main/project_view.html',{'projects':Project.objects.get(id=id), 'form' : form})
+
+    def post(self, request, id):
+        project1 = Project.objects.get(id=id)
+        form = RatingForm(request.POST)
+        if form.is_valid():
+            vote_value = form.cleaned_data['rating']  # class str
+            rating1 = Rating()
+            rating1.rating = int(vote_value)
+            rating1.project = project1
+            rating1.save()
+            project1.average_rating = project1.mean_method()
+            project1.save()
+
+        vote = True
+        return render(request, 'main/project_view.html', {'projects': Project.objects.get(id=id), 'vote': vote})
 
 
 class ContactEmail(View):
@@ -76,7 +115,6 @@ class ProjectFormView(View):
 
     def get(self, request):
         form = ProjectForm()
-        print(form)
         return render(request, 'profile/add_project.html', {'form': form})
     def post(self, request):
         form = ProjectForm(request.POST)
