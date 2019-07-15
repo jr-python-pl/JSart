@@ -20,7 +20,7 @@ class Project(models.Model):
     title = models.CharField(max_length=128, default='Untitled', verbose_name="Title")
     description = models.TextField(verbose_name="description", blank=True)
     body = models.TextField(verbose_name="script body" ,null =False , blank=False )
-    thumbnail = models.ImageField(upload_to='thumbs/', blank = False , null = False )
+    thumbnail = models.ImageField(upload_to='thumbs/', blank = False, null = False )
 
 
 

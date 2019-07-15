@@ -13,10 +13,18 @@ class MainUserCreationForm(forms.UserCreationForm):
         model = User
 
 
+class ProfileEditForm(main_forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['cv','email','image']
+
+
 class ProjectForm(main_forms.ModelForm):
     class Meta:
         model = Project
         fields = ['title','thumbnail','description','body']
+
+       
 
         
 class ContactForm(main_forms.Form):

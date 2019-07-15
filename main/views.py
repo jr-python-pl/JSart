@@ -7,7 +7,7 @@ from django.views.generic import CreateView, UpdateView, DeleteView, DetailView,
 from django.http import HttpResponse
 
 from main.models import User, Project
-from main.forms import MainUserCreationForm,ProjectForm, ContactForm
+from main.forms import MainUserCreationForm,ProjectForm, ContactForm,ProfileEditForm
 from django.core.mail import send_mail, BadHeaderError
 
 
@@ -45,12 +45,15 @@ class ProfileEdit(View):
             "email":user.email
         }
        
-        form = MainUserCreationForm(initial=initial_data)
+        form = ProfileEditForm(initial=initial_data)
         return render(request, 'profile/profile_edit.html' ,{'author':User.objects.get(username=username),'form':form})
     def post(self, request):
-        form = MainUserCreationForm(request.POST)
+        form = ProfileEditForm(request.POST,request.FILES)
         if form.is_valid():
-            form.save()
+            fmirror = form.save(commit=False)
+            fmirror.user=request.user
+            fmirror.save()
+            
             return render(request, 'profile/profile_edit.html' ,{'author':User.objects.get(username=username),'form':form})
 
 
@@ -97,11 +100,16 @@ class ProjectFormView(View):
 
     def get(self, request):
         form = ProjectForm()
+
+
         return render(request, 'profile/add_project.html', {'form': form})
     def post(self, request):
-        form = ProjectForm(request.POST)
+        form = ProjectForm(request.POST,request.FILES)
         if form.is_valid():
-            form.save()
+            # form save with logged in user 
+            fmirror = form.save(commit=False)
+            fmirror.user=request.user
+            fmirror.save()
         return render(request,'profile/add_project.html',{'form':form})
 
 
