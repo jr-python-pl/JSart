@@ -23,6 +23,7 @@ class Project(models.Model):
     thumbnail = models.ImageField(upload_to='thumbs/', blank = False , null = False )
     average_rating = models.DecimalField(default=0, max_digits=4, decimal_places=2)
 
+
     def __str__(self):
         return f'Project: {self.title}, Author: {self.user}'
 
