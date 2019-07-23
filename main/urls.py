@@ -2,8 +2,7 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 
-from main.views import Home, ContactEmail, About, Portfolio, Project, ProjectView, ProjectFormView, Profile, Authors, \
-    SuccessView, ProfileEdit
+from main.views import Home, ContactEmail, About, Portfolio, ProjectView, ProjectFormView, Authors, SuccessView
 
 app_name = 'main'
 urlpatterns = [
@@ -15,8 +14,8 @@ urlpatterns = [
     path('contact/', ContactEmail.as_view(), name="contact"),
     path('success/', SuccessView.as_view(), name='success'),
     path('add_project/', ProjectFormView.as_view(), name="add_project"),
-    path('profile/<username>', Profile.as_view(), name="profile"),
-    path('profile/<username>/edit', ProfileEdit.as_view(), name="profile_edit"),
+    # path('profile/<username>', Profile.as_view(), name="profile"),
+    # path('profile/<username>/edit', ProfileEdit.as_view(), name="profile_edit"),
     #authors
     path('authors/', Authors.as_view(), name="authors"),
 

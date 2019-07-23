@@ -31,35 +31,35 @@ class Portfolio(View):
         return render(request, 'main/portfolio.html' ,{'projects':Project.objects.all()})
 
 
-class Profile(View):
-
-    def get(self, request, username):
-        # user = request.user
-        return render(request, 'profile/profile.html' ,{'author':CustomUser.objects.get(username=username)})
-
-
-class ProfileEdit(View):
-
-    def get(self, request, username):
-        
-        user = request.user
-        initial_data = {
-            "cv" : user.cv,
-            "image":user.image,
-            "email":user.email
-        }
-       
-        form = ProfileEditForm(initial=initial_data)
-        return render(request, 'profile/profile_edit.html' ,{'author':CustomUser.objects.get(username=username),'form':form})
-
-    def post(self, request):
-        form = ProfileEditForm(request.POST,request.FILES)
-        if form.is_valid():
-            fmirror = form.save(commit=False)
-            fmirror.user = request.user
-            fmirror.save()
-            
-            return render(request, 'profile/profile_edit.html' ,{'author': CustomUser.objects.get(username=username),'form':form})
+# class Profile(View):
+#
+#     def get(self, request, username):
+#         # user = request.user
+#         return render(request, 'profile/profile.html' ,{'author':CustomUser.objects.get(username=username)})
+#
+#
+# class ProfileEdit(View):
+#
+#     def get(self, request, username):
+#
+#         user = request.user
+#         initial_data = {
+#             "cv" : user.cv,
+#             "image":user.image,
+#             "email":user.email
+#         }
+#
+#         form = ProfileEditForm(initial=initial_data)
+#         return render(request, 'profile/profile_edit.html' ,{'author':CustomUser.objects.get(username=username),'form':form})
+#
+#     def post(self, request):
+#         form = ProfileEditForm(request.POST,request.FILES)
+#         if form.is_valid():
+#             fmirror = form.save(commit=False)
+#             fmirror.user = request.user
+#             fmirror.save()
+#
+#             return render(request, 'profile/profile_edit.html' ,{'author': CustomUser.objects.get(username=username),'form':form})
 
 
 class ProjectView(View):
