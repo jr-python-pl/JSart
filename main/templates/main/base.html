@@ -2,10 +2,6 @@
 
 {% load static %}
 
-
-
-
-
 <html>
     <head><meta charset="utf-8">
       <meta charset="utf-8">
@@ -16,7 +12,7 @@
 
     <!-- Bootstrap CSS -->
 
-    <link rel="stylesheet" type="text/css" href="{% static 'main/css/bootstrap.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static 'main/css/bootstrap.css' %}">
       <link rel="stylesheet" type="text/css" href="{% static 'main/css/bootstrap.min.css' %}">
       <link rel="stylesheet" type="text/css" href="{% static 'main/css/lightbox.css' %}">
       <link rel="stylesheet" type="text/css" href="{% static 'main/css/style.css' %}">
@@ -37,7 +33,7 @@
                <span class="icon-bar inverted bottom"></span>
                </button>
             </div>
-            <a class="navbar-brand" href="{% url 'main:logout' %}">
+            <a class="navbar-brand" href="{% url 'logout' %}">
             <img class="logo" src="{% static 'main/img/logo.png' %}" alt="logo">
             </a>
             <div class="nav-content hideNav hidden">
@@ -45,14 +41,14 @@
                   <li class="nav-item"><a class="item-anchor" href="{% url 'main:home' %}">Home</a></li>
                   <li class="nav-item"><a class="item-anchor" href="{% url 'main:portfolio' %}">Portfolio</a></li>
                   <li class="nav-item"><a class="item-anchor" href="{% url 'main:authors'  %}">Authors</a></li>
-                  <li class="nav-item"><a class="item-anchor" href="{% url 'main:contact' %}">Contests</a></li>
+                  <li class="nav-item"><a class="item-anchor" href="{% url 'ranking:ranking' %}">Ranking</a></li>
                   <li class="nav-item"><a class="item-anchor" href="{% url 'main:contact' %}">Contact</a></li>
                   <li class="nav-item"><a class="item-anchor" href="{% url 'main:about' %}">About</a></li>
 
                   {% if request.user.is_authenticated %}
                   <li class="nav-item"><a class="item-anchor" href="{% url 'main:profile' user.username %}">Profile</a></li>
-                  <li class="nav-item"> Logged in : {{ request.user }}</a></li>
-                  <li class="nav-item"><a href="{% url 'main:logout' %}"> Log out </a>  </li>
+                  <li class="nav-item"> Logged in : {{ request.user }}</li>
+                  <li class="nav-item"><a href="{% url 'logout' %}"> Log out </a>  </li>
 
                   
                   
@@ -61,10 +57,10 @@
                   {% else %}
                   <li class="nav-item">
 
-                      <a href="{% url 'main:login' %}">Log in</a> / <a href="{% url 'main:signup' %}">Sign in</a>
+                      <a href="{% url 'login' %}">Log in</a> / <a href="{% url 'register' %}">Sign in</a>
                     </li>
 
-                  {% endif %}</li>
+                  {% endif %}
 
 
 
@@ -73,8 +69,15 @@
             </div>
          </div>
       </nav>
-</li>
 
+        <!-- Successfull registration message !!!! message wchodzi na logo, trzeba przesunąć na środek albo w prawo-->
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
+        {% endfor %}
+        {% endif %}
 
         {% block content %}
         {% endblock %}
