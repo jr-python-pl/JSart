@@ -30,7 +30,7 @@ SECRET_KEY = config['SECRET_KEY']
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-CRISPY_TEMPLATE_PACK = 'bootstrap3'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # Application definition
 
@@ -41,8 +41,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'users.apps.UsersConfig',
     'main',
     'crispy_forms',
+    'ranking',
 ]
 
 MIDDLEWARE = [
@@ -105,7 +107,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-AUTH_USER_MODEL = 'main.User'
+# AUTH_USER_MODEL = 'main.User'
+AUTH_USER_MODEL = 'users.CustomUser'
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
@@ -127,9 +131,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 LOGIN_URL = '/login'
 
-MEDIA_URL = '/media/'
-LOGIN_REDIRECT_URL = '/main'
-LOGOUT_REDIRECT_URL = '/main'
-# MEDIA_ROOT = 'media/'
+# LOGIN_REDIRECT_URL = '/main'
+LOGIN_REDIRECT_URL = 'main:home'
+LOGOUT_REDIRECT_URL = 'main:home'
+MEDIA_ROOT = 'media/'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
