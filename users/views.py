@@ -67,3 +67,5 @@ class ProfileEditView(View):
 
             return render(request, 'profile/profile_edit.html',
                           {'author': CustomUser.objects.get(username=fmirror.username), 'form': form})
+
+

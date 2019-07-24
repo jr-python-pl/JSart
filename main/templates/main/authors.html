@@ -14,10 +14,10 @@
         <!-- no splitting required - all done with CSS -->
         {% if author.image %}
         <p class='author-photo'><img alt="author photo" src="{{ author.image.url}}" height="225" /></p></br>
-        {%else%}
+        {% else %}
         <p class='author-photo'><img src="{% static 'main/img/default_user_pic.jpeg' %}" alt="user pic"></p>
-        {%endif%}
-        <p class="author-name"> <a href=" {% url 'main:profile' author.username %}">{{author.username}}</a></p>
+        {% endif %}
+        <p class="author-name"> <a href=" {% url 'profile' author.username %}">{{ author.username }}</a></p>
         <!-- </div> -->
     </div>
     {% endfor %}
