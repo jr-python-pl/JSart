@@ -4,6 +4,7 @@ from django.conf.urls.static import static
 
 from main.views import Home, ContactEmail, About, Portfolio, ProjectView, ProjectFormView, Authors, SuccessView
 
+
 app_name = 'main'
 urlpatterns = [
 

@@ -62,6 +62,7 @@ class Portfolio(View):
 #             return render(request, 'profile/profile_edit.html' ,{'author': CustomUser.objects.get(username=username),'form':form})
 
 
+
 class ProjectView(View):
 
     def get(self, request, id):

@@ -4,6 +4,7 @@ from django.views import View
 from .forms import CustomUserCreationForm, ProfileEditForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+
 from .models import CustomUser
 
 
