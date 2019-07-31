@@ -1,14 +1,15 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth import login, authenticate
-from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse, reverse_lazy
 from django.views import View
 from django.views.generic import CreateView, UpdateView, DeleteView, DetailView, ListView,FormView
 from django.http import HttpResponse
 
-from main.models import User, Project
-from main.forms import MainUserCreationForm,ProjectForm, ContactForm
+from users.models import CustomUser
+from main.models import Project
+from main.forms import ProjectForm, ContactForm
 from django.core.mail import send_mail, BadHeaderError
+from ranking.forms import RatingForm
+from ranking.models import Rating
 
 
 class Home(View):
@@ -16,48 +17,40 @@ class Home(View):
     def get(self, request):
         return render(request, 'main/home.html')
 
-class Authors(View):
+
+class AuthorsView(View):
 
     def get(self, request):
-        return render(request, 'main/authors.html' ,{'authors':User.objects.all()})
+        return render(request, 'main/authors.html', {'authors':CustomUser.objects.all()})
 
-class Portfolio(View):
+
+class PortfolioView(View):
 
     def get(self, request):
-        return render(request, 'main/portfolio.html' ,{'projects':Project.objects.all()})
 
-class Profile(View):
-
-    def get(self, request, username):
-        # user = request.user
-        return render(request, 'profile/profile.html' ,{'author':User.objects.get(username=username)})
-
-class ProfileEdit(View):
-    
-    
-
-    def get(self, request, username):
-        
-        user = request.user
-        initial_data = {
-            "cv" : user.cv,
-            "image":user.image,
-            "email":user.email
-        }
-       
-        form = MainUserCreationForm(initial=initial_data)
-        return render(request, 'profile/profile_edit.html' ,{'author':User.objects.get(username=username),'form':form})
-    def post(self, request):
-        form = MainUserCreationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return render(request, 'profile/profile_edit.html' ,{'author':User.objects.get(username=username),'form':form})
+        return render(request, 'main/portfolio.html', {'projects':Project.objects.all()})
 
 
 class ProjectView(View):
 
     def get(self, request, id):
-        return render(request, 'main/project_view.html',{'projects':Project.objects.get(id=id)})
+        form = RatingForm()
+        return render(request, 'main/project_view.html',{'projects': Project.objects.get(id=id), 'form' : form})
+
+    def post(self, request, id):
+        project1 = Project.objects.get(id=id)
+        form = RatingForm(request.POST)
+        if form.is_valid():
+            vote_value = form.cleaned_data['rating']  # class str
+            rating1 = Rating()
+            rating1.rating = int(vote_value)
+            rating1.project = project1
+            rating1.save()
+            project1.average_rating = project1.mean_method()
+            project1.save()
+
+        vote = True
+        return render(request, 'main/project_view.html', {'projects': Project.objects.get(id=id), 'vote': vote})
 
 
 class ContactEmail(View):
@@ -87,7 +80,7 @@ class SuccessView(View):
         return HttpResponse('Success! Thank you for your message.')
 
 
-class About(View):
+class AboutView(View):
 
     def get(self, request):
         return render(request, 'main/contact.html')
@@ -97,34 +90,17 @@ class ProjectFormView(View):
 
     def get(self, request):
         form = ProjectForm()
-        return render(request, 'profile/add_project.html', {'form': form})
-    def post(self, request):
-        form = ProjectForm(request.POST)
-        if form.is_valid():
-            form.save()
-        return render(request,'profile/add_project.html',{'form':form})
-
-
-
-
-class SignUPView(View):
-    # Creating a new user
-    def get(self, request):
-        form = MainUserCreationForm()
-        return render(request, 'registration/signup.html', {'form': form})
+        return render(request, 'main/add_project.html', {'form': form})
 
     def post(self, request):
-        form = MainUserCreationForm(request.POST)
+        form = ProjectForm(request.POST,request.FILES)
         if form.is_valid():
-            new_user = form.save()
-            new_user.email = form.cleaned_data.get('email')
-            new_user.cv = form.cleaned_data.get('cv')
-            new_user.image = form.cleaned_data.get('image')
-            new_user.save()
-            # authenticate and login new user
-            username = form.cleaned_data.get('username')
-            raw_password = form.cleaned_data.get('password1')
-            user = authenticate(username=username, password=raw_password)
-            login(request, user)
-            return redirect(reverse('main:home'))
-        return render(request, 'registration/signup.html', {'form': form})
+            # form save with logged in user
+            fmirror = form.save(commit=False)
+            fmirror.user=request.user
+            fmirror.save()
+        return render(request,'main/add_project.html',{'form':form})
+
+
+
+
