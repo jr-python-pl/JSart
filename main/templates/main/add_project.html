@@ -1,0 +1,30 @@
+{% extends 'main/base.html' %}
+{% load crispy_forms_tags %}
+
+
+
+{% block content %}
+
+<!-- </br></br></br>
+</br></br></br> -->
+
+<section>
+
+  <div class="container">
+
+    <h1 class="section-header">Add new Project ....</h1>
+
+    <form enctype='multipart/form-data' method="POST" class="margin-top-30">
+      {% csrf_token %}
+      {{form|crispy}}
+      <button type="submit">Add new one ...</button>
+    </form>
+
+    <!-- <div class="container" style="width: 400px">
+ </div> -->
+
+  </div>
+
+</section>
+
+{% endblock  %}
