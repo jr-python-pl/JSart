@@ -11,6 +11,7 @@
 {{projects.body|safe}}
 
 {% endif %}
+  {% if not user_vote and request.user.is_authenticated %}
 
 {% if vote %}
 <br>
@@ -26,5 +27,9 @@
   </form>
 
 {% endif %}
+{%else %}
+<p> cannot vote  </p> 
+<!-- to be continued -Mateusz- -->
+{%endif%}
   </body>
 </html>

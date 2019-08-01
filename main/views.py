@@ -39,18 +39,36 @@ class ProjectView(View):
 
     def post(self, request, id):
         project1 = Project.objects.get(id=id)
+        
+        '''
+         lines below to check if there is one or more rating given 
+         for each project by one logged user
+        -Mateusz-
+        '''
+          
+        try:
+            user_vote = Rating.objects.get(who_rated=request.user, project=project1 )
+            user_vote = True
+        except Rating.DoesNotExist:
+            user_vote = False
+        except Rating.MultipleObjectsReturned: 
+            user_vote = True
+        
         form = RatingForm(request.POST)
-        if form.is_valid():
+        if form.is_valid() and user_vote == False :
             vote_value = form.cleaned_data['rating']  # class str
             rating1 = Rating()
             rating1.rating = int(vote_value)
             rating1.project = project1
+            rating1.who_rated=request.user
             rating1.save()
+            
+                  
             project1.average_rating = project1.mean_method()
             project1.save()
 
         vote = True
-        return render(request, 'main/project_view.html', {'projects': Project.objects.get(id=id), 'vote': vote})
+        return render(request, 'main/project_view.html', {'projects': Project.objects.get(id=id), 'vote': vote , 'user_vote':user_vote})
 
 
 class ContactEmail(View):
