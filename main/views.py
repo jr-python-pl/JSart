@@ -27,7 +27,6 @@ class AuthorsView(View):
 class PortfolioView(View):
 
     def get(self, request):
-
         return render(request, 'main/portfolio.html', {'projects':Project.objects.all()})
 
 
