@@ -69,4 +69,3 @@ class ProfileEditView(View):
                           {'author': CustomUser.objects.get(username=fmirror.username), 'form': form})
 
 
-

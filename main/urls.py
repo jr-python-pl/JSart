@@ -1,7 +1,6 @@
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-
 from main.views import Home, ContactEmail, AboutView, PortfolioView, ProjectView, ProjectFormView, AuthorsView, SuccessView
 
 
