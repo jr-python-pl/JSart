@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 import json
 import os
 
-with open('/etc/JSartConfig/JSartConfig.json') as config_file:
+with open('../JSartConfig.json') as config_file:
     config = json.load(config_file)
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
