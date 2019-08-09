@@ -44,8 +44,8 @@ li {
 }
 
 section {
-    padding-top: 185px;
-    padding-bottom: 185px;
+    padding-top: 150px;
+    /* padding-bottom: 185px; */
 }
 
 .no-gutter {
@@ -755,4 +755,11 @@ form button:hover::after {
 
 .invalid-feedback>strong {
     color: red;
+}
+
+.alert {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
