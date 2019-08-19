@@ -1,35 +1,32 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>{{projects.title}}</title>
-  </head>
-  <body>
 
+<head>
+  <meta charset="utf-8">
+  <title>{{projects.title}}</title>
+</head>
 
-{% if projects %}
-{{projects.body|safe}}
+<body>
 
-{% endif %}
-  {% if not user_vote and request.user.is_authenticated %}
+  {% if projects %}
+  {{projects.body|safe}}
 
-{% if vote %}
-<br>
-<p>Your vote was sent</p>
-{% else %}
+  {% endif %}
+
+  {% if vote %}
+  <!-- <br> -->
+  <p>Your vote was sent</p>
+  {% else %}
   <h4>
     Rating
   </h4>
   <form action="#" method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Rate this project</button>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Rate this project</button>
   </form>
 
-{% endif %}
-{%else %}
-<p> cannot vote  </p> 
-<!-- to be continued -Mateusz- -->
-{%endif%}
-  </body>
+  {% endif %}
+</body>
+
 </html>
