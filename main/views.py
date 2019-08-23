@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.views import View
-from django.views.generic import CreateView, UpdateView, DeleteView, DetailView, ListView,FormView
 from django.http import HttpResponse
 
 from users.models import CustomUser
