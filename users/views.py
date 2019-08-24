@@ -1,15 +1,24 @@
+from django.contrib.auth.views import PasswordChangeView, PasswordChangeDoneView
 from django.shortcuts import render, redirect
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.views import View
 from .forms import CustomUserCreationForm, ProfileEditForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-
+from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.forms import PasswordChangeForm
 from .models import CustomUser
-
 
 from django.contrib.auth import login, authenticate
 # from main.forms import import MainUserCreationForm
+
+
+class ChangePasswordView(PasswordChangeView):
+    success_url = reverse_lazy('password-change-done')
+    template_name = 'users/password_change.html'
+
+class ChangePasswordDone(PasswordChangeDoneView):
+    template_name = 'users/password_change_done.html'
 
 
 class RegisterView(View):
@@ -40,7 +49,6 @@ class ProfileView(View):
 
     # @login_required
     def get(self, request, username):
-        # user = request.user
         return render(request, 'users/profile.html', {'author': CustomUser.objects.get(username=username)})
 
 
