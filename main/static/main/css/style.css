@@ -8,6 +8,10 @@ body {
     font-family: 'Fauna One', serif;
     font-size: 17px;
     line-height: 1.8 !important;
+
+    background-color: #efefef;
+    background-image: url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c1c1c1' fill-opacity='0.23'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+
 }
 
 html {
@@ -40,8 +44,8 @@ li {
 }
 
 section {
-    padding-top: 185px;
-    padding-bottom: 185px;
+    padding-top: 150px;
+    /* padding-bottom: 185px; */
 }
 
 .no-gutter {
@@ -135,13 +139,13 @@ a:visited {
 }
 
 .navbar-brand>img {
-    max-width: 120px;
+    max-width: 100px;
     z-index: 9999;
     transition: .3s;
 }
 
 .navbar-brand>img.small {
-    max-width: 80px;
+    max-width: 50px;
 }
 
 @media (max-width: 768px) {
@@ -631,18 +635,33 @@ a:visited {
 
 
 
-/* ------------ Containers ------------ */
-.subcontainer {
+/* ------------ My changes ------------ */
+
+/* .subcontainer {
     position: relative;
     padding: 150px 0;
     text-align: center;
+} */
+
+.section-header {
+    position: relative;
+    display: inline-block;
+    padding: 5px 10px;
+    background: #f8c63d;
+    border-radius: 10px;
+    text-transform: uppercase;
 }
 
-.abs-mobile {
+.section-header::before {
+    content: "";
     position: absolute;
-    top: 0;
-    left: 0;
-    transform: translateY(-100vh);
+    top: -10px;
+    left: -10px;
+    border-radius: 10px;
+    background: #377ef0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
 }
 
 .flex-authors {
@@ -652,6 +671,32 @@ a:visited {
     align-items: center;
     min-height: 320px;
     padding: 20px;
+    border: 2px solid gray;
+}
+
+.flex-project {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    min-height: 320px;
+    /* margin: 20px 10px; */
+    padding: 20px;
+    background-color: #377ef0;
+    border-radius: 10px;
+    text-align: left;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+}
+
+.flex-project p,
+.flex-project a {
+    color: white;
+}
+
+.flex-project span {
+    font-size: .7em;
 }
 
 
@@ -660,4 +705,61 @@ a:visited {
     .flex-authors:nth-child(even) {
         flex-direction: column-reverse;
     }
+
+    .flex-project:nth-child(odd) {
+        padding-top: 100px;
+    }
+}
+
+
+
+
+
+
+/* ------------ forms ------------ */
+
+form button {
+    position: relative;
+    padding: 5px 20px;
+    background: #f8c63d;
+    color: black;
+    border: none;
+    border-radius: 10px;
+    transition: transform .3s linear;
+}
+
+
+form button::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #377ef0;
+    border-radius: 10px;
+    opacity: 1;
+    z-index: -1;
+    transition: transform .3s linear;
+}
+
+form button:hover::after {
+    transform: translate(-10px, -10px);
+    z-index: -1;
+}
+
+
+.is-invalid {
+    background: rgba(255, 0, 0, .15);
+}
+
+.invalid-feedback>strong {
+    color: red;
+}
+
+.alert {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
