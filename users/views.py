@@ -1,13 +1,24 @@
+from django.contrib.auth.views import PasswordChangeView, PasswordChangeDoneView
 from django.shortcuts import render, redirect
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.views import View
-from .forms import CustomUserCreationForm
+from .forms import CustomUserCreationForm, ProfileEditForm
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.forms import PasswordChangeForm
 from .models import CustomUser
-
 
 from django.contrib.auth import login, authenticate
 # from main.forms import import MainUserCreationForm
+
+
+class ChangePasswordView(PasswordChangeView):
+    success_url = reverse_lazy('password-change-done')
+    template_name = 'users/password_change.html'
+
+class ChangePasswordDone(PasswordChangeDoneView):
+    template_name = 'users/password_change_done.html'
 
 
 class RegisterView(View):
@@ -33,41 +44,36 @@ class RegisterView(View):
             return redirect(reverse('login'))
         return render(request, 'users/register.html', {'form': form})
 
-            # new_user = form.save()
-            # new_user.email = form.cleaned_data.get('email')
-            # new_user.cv = form.cleaned_data.get('cv')
-            # new_user.image = form.cleaned_data.get('image')
-            # new_user.save()
-            # # authenticate and login new user
-            # username = form.cleaned_data.get('username')
-            # raw_password = form.cleaned_data.get('password1')
-            # user = authenticate(username=username, password=raw_password)
-            # login(request, user)
-            # return redirect(reverse('main:home'))
-        # return render(request, 'registration/signup.html', {'form': form})
 
-# class SignUPView(View):
-#     # Creating a new user
-#     def get(self, request):
-#         form = MainUserCreationForm()
-#         return render(request, 'registration/signup.html', {'form': form})
-#
-#     def post(self, request):
-#         form = MainUserCreationForm(request.POST)
-#         if form.is_valid():
-#             new_user = form.save()
-#             new_user.email = form.cleaned_data.get('email')
-#             new_user.cv = form.cleaned_data.get('cv')
-#             new_user.image = form.cleaned_data.get('image')
-#             new_user.save()
-#             # authenticate and login new user
-#             username = form.cleaned_data.get('username')
-#             raw_password = form.cleaned_data.get('password1')
-#             user = authenticate(username=username, password=raw_password)
-#             login(request, user)
-#             return redirect(reverse('main:home'))
-#         return render(request, 'registration/signup.html', {'form': form})
-#
-#
-#
+class ProfileView(View):
+
+    # @login_required
+    def get(self, request, username):
+        return render(request, 'users/profile.html', {'author': CustomUser.objects.get(username=username)})
+
+
+class ProfileEditView(View):
+
+    def get(self, request, username):
+        user = request.user
+        initial_data = {
+            "cv": user.cv,
+            "image": user.image,
+            "email": user.email
+        }
+
+        form = ProfileEditForm(initial=initial_data)
+        return render(request, 'users/profile_edit.html',
+                      {'author': CustomUser.objects.get(username=username), 'form': form})
+
+    def post(self, request):
+        form = ProfileEditForm(request.POST, request.FILES)
+        if form.is_valid():
+            fmirror = form.save(commit=False)
+            fmirror.user = request.user
+            fmirror.save()
+
+            return render(request, 'profile/profile_edit.html',
+                          {'author': CustomUser.objects.get(username=fmirror.username), 'form': form})
+
 
