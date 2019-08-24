@@ -3,103 +3,96 @@
 {% load static %}
 
 <html>
-    <head><meta charset="utf-8">
-      <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <meta name="description" content="">
-      <meta name="author" content="">
 
-    <!-- Bootstrap CSS -->
+<head>
+   <meta charset="utf-8">
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="description" content="">
+   <meta name="author" content="">
 
-      <link rel="stylesheet" type="text/css" href="{% static 'main/css/bootstrap.css' %}">
-      <link rel="stylesheet" type="text/css" href="{% static 'main/css/bootstrap.min.css' %}">
-      <link rel="stylesheet" type="text/css" href="{% static 'main/css/lightbox.css' %}">
-      <link rel="stylesheet" type="text/css" href="{% static 'main/css/style.css' %}">
+   <!-- Bootstrap CSS -->
+
+   <link rel="stylesheet" type="text/css" href="{% static 'main/css/bootstrap.css' %}">
+   <link rel="stylesheet" type="text/css" href="{% static 'main/css/bootstrap.min.css' %}">
+   <link rel="stylesheet" type="text/css" href="{% static 'main/css/lightbox.css' %}">
+   <link rel="stylesheet" type="text/css" href="{% static 'main/css/style.css' %}">
 
 
-    <title>
-        {% block title %}JSart{% endblock %}
-    </title>
-    </head>
-    <body>
-<!-- right corner navbar  -->
-      <nav class="navbar navbar-default navbar-fixed-top">
-         <div class="col-md-12">
-            <div class="nav">
-               <button class="btn-nav">
+   <title>
+      {% block title %}JSart{% endblock %}
+   </title>
+</head>
+
+<body>
+
+   <!-- right corner navbar  -->
+   <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="col-md-12">
+         <div class="nav">
+            <button class="btn-nav">
                <span class="icon-bar inverted top"></span>
                <span class="icon-bar inverted middle"></span>
                <span class="icon-bar inverted bottom"></span>
-               </button>
-            </div>
-            <a class="navbar-brand" href="{% url 'main:home' %}">
-            <img class="logo" src="{% static 'main/img/logo.png' %}" alt="logo">
-            </a>
-            <div class="nav-content hideNav hidden">
-               <ul class="nav-list vcenter">
-                  <li class="nav-item"><a class="item-anchor" href="{% url 'main:home' %}">Home</a></li>
-                  <li class="nav-item"><a class="item-anchor" href="{% url 'main:portfolio' %}">Portfolio</a></li>
-                  <li class="nav-item"><a class="item-anchor" href="{% url 'main:authors'  %}">Authors</a></li>
-                  <li class="nav-item"><a class="item-anchor" href="{% url 'ranking:ranking' %}">Ranking</a></li>
-                  <li class="nav-item"><a class="item-anchor" href="{% url 'main:contact' %}">Contact</a></li>
-                  <li class="nav-item"><a class="item-anchor" href="{% url 'main:about' %}">About</a></li>
-
-                  {% if request.user.is_authenticated %}
-                       <li class="nav-item"><a class="item-anchor" href="{% url 'profile' user.username %}">Profile</a></li>
-                       <li class="nav-item">{{ request.user }} / <a href="{% url 'logout' %}"> Log out </a>  </li>
-
-
-                  {% else %}
-                       <li class="nav-item">
-                          <a href="{% url 'login' %}">Login</a> / <a href="{% url 'register' %}">Sign in</a>
-                        </li>
-
-                  {% endif %}
-
-
-               </ul>
-            </div>
+            </button>
          </div>
-      </nav>
+         <a class="navbar-brand" href="{% url 'main:home' %}">
+            <img class="logo" src="{% static 'main/img/logo.png' %}" alt="logo">
+         </a>
+         <div class="nav-content hideNav hidden">
+            <ul class="nav-list vcenter">
+               <li class="nav-item"><a class="item-anchor" href="{% url 'main:home' %}">Home</a></li>
+               <li class="nav-item"><a class="item-anchor" href="{% url 'main:portfolio' %}">Portfolio</a></li>
+               <li class="nav-item"><a class="item-anchor" href="{% url 'main:authors'  %}">Authors</a></li>
+               <li class="nav-item"><a class="item-anchor" href="{% url 'ranking:ranking' %}">Ranking</a></li>
+               <li class="nav-item"><a class="item-anchor" href="{% url 'main:contact' %}">Contact</a></li>
+               <li class="nav-item"><a class="item-anchor" href="{% url 'main:about' %}">About</a></li>
 
-        <!-- Successfull registration message !!!! message wchodzi na logo, trzeba przesunąć na środek albo w prawo-->
-        {% if messages %}
-            {% for message in messages %}
-                <div class="alert alert-{{ message.tags }}">
-                    {{ message }}
-                </div>
-        {% endfor %}
-        {% endif %}
-
-        {% block content %}
-        {% endblock %}
-
-        <script type "text/javascript">
-      function openSesame(){
-      window.open("http://color-wander.surge.sh/","_new");
-    }
-  </script>
-
-        <script src="{% static 'main/js/jquery.js' %}"></script>
-        <script src="{% static 'main/js/bootstrap.min.js' %}"></script>
-        <script src="{% static 'main/js/menu-color.js' %}"></script>
-        <script src="{% static 'main/js/modernizr.js' %}"></script>
-        <script src="{% static 'main/js/script.js' %}"></script>
-
-  </body>
+               {% if request.user.is_authenticated %}
+               <li class="nav-item"><a class="item-anchor" href="{% url 'profile' user.username %}">Profile</a></li>
+               <li class="nav-item">{{ request.user }} / <a href="{% url 'logout' %}"> Log out </a> </li>
 
 
-<!--               
-              {% if messages %}
-              <ul class="messages">
-                  {% for message in messages %}
-                  <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
-                      {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important:
-                      {% endif %}
-                      {{ message }}
-                  </li>
-                  {% endfor %}
-              </ul>
-              {% endif %} -->
+               {% else %}
+               <li class="nav-item">
+                  <a href="{% url 'login' %}">Login</a> / <a href="{% url 'register' %}">Sign in</a>
+               </li>
+
+               {% endif %}
+
+
+            </ul>
+         </div>
+
+      </div>
+   </nav>
+
+   <!-- Successfull registration message !!!! message wchodzi na logo, trzeba przesunąć na środek albo w prawo-->
+   {% if messages %}
+   {% for message in messages %}
+   <div class="alert alert-{{ message.tags }}">
+      {{ message }}
+   </div>
+   {% endfor %}
+   {% endif %}
+
+   {% block content %}
+   {% endblock %}
+
+
+   <script type="text/javascript">
+      function openSesame() {
+         window.open("http://color-wander.surge.sh/", "_new");
+      }
+   </script>
+
+   <script src="{% static 'main/js/jquery.js' %}"></script>
+   <script src="{% static 'main/js/bootstrap.min.js' %}"></script>
+   <script src="{% static 'main/js/menu-color.js' %}"></script>
+   <script src="{% static 'main/js/modernizr.js' %}"></script>
+   <script src="{% static 'main/js/script.js' %}"></script>
+
+</body>
+
 </html>

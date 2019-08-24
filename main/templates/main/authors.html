@@ -4,26 +4,34 @@
 <!-- registered new filter -->
 {% block content %}
 
-<div class="subcontainer">
-    <h1>Authors of JS code </h1>
+<section>
+    <div class="container text-center">
 
-    {% for author in authors %}
-    <div class="col-sm-6 col-md-4 no-gutter text-center margin-top-30 flex-authors">
-        <!-- <div class="flex-authors"> -->
-        <!-- splitting query in two -- modulo function - registered filter in in templatetags/new_tags.py -->
-        <!-- no splitting required - all done with CSS -->
-        {% if author.image %}
-        <p class='author-photo'><img alt="author photo" src="{{ author.image.url}}" height="225" /></p></br>
-        {% else %}
-        <p class='author-photo'><img src="{% static 'main/img/default_user_pic.jpeg' %}" alt="user pic"></p>
-        {% endif %}
-        <p class="author-name"> <a href=" {% url 'profile' author.username %}">{{ author.username }}</a></p>
-        <!-- </div> -->
+        <h2 class="section-header">Authors of JS code </h2>
+        <br />
+
+        {% for author in authors %}
+        <div class="col-sm-6 col-md-4 no-gutter text-center margin-top-30 flex-authors">
+
+            {% if author.image %}
+
+            <p class='author-photo'><img alt="author photo" src="{{ author.image.url}}" height="225" /></p>
+
+            {% else %}
+
+            <p class='author-photo'><img src="{% static 'main/img/default_user_pic.jpeg' %}" alt="user pic"></p>
+
+            {% endif %}
+
+            <p class="author-name"> <a href=" {% url 'profile' author.username %}">{{ author.username }}</a></p>
+
+        </div>
+        {% endfor %}
+
+        <div style="clear:both;"></div>
+
     </div>
-    {% endfor %}
-
-    <div style="clear:both;"></div>
-</div>
+</section>
 
 
 {% endblock %}
