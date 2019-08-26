@@ -9,6 +9,10 @@
 <body>
  
   {% if projects %}
+  <a href=" {% url 'main:runscript' projects.id %}" class="btn btn-primary text-white"><img src="{{projects.thumbnail.url}}" class="img-fluid img-gray" alt="project thumbnail"></a>
+
+  
+</br>
   {{projects.description}}
 
   {% endif %}
@@ -25,7 +29,7 @@
     {{ form.as_p }}
     <button type="submit">Rate this project</button>
   </form>
-<a href=" {% url 'main:runscript' projects.id %}" class="btn btn-primary text-white">Zobacz</a>
+
   {% endif %}
   
 </body>
