@@ -3,7 +3,7 @@ from django.core.validators import EmailValidator, URLValidator
 from main.models import Project
 
 
-class ProjectForm(main_forms.ModelForm):
+class AddProjectForm(main_forms.ModelForm):
     class Meta:
         model = Project
         fields = ['title','thumbnail','description','body']
