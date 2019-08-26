@@ -1,11 +1,14 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.views import View
 from django.http import HttpResponse
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 from users.models import CustomUser
 from main.models import Project
-from main.forms import ProjectForm, ContactForm
+from main.forms import AddProjectForm, ContactForm
 from django.core.mail import send_mail, BadHeaderError
 from ranking.forms import RatingForm
 from ranking.models import Rating
@@ -102,20 +105,23 @@ class AboutView(View):
         return render(request, 'main/contact.html')
 
 
-class ProjectFormView(View):
+class AddProjectView(LoginRequiredMixin, View):
 
     def get(self, request):
-        form = ProjectForm()
+        form = AddProjectForm()
         return render(request, 'main/add_project.html', {'form': form})
 
     def post(self, request):
-        form = ProjectForm(request.POST,request.FILES)
+        form = AddProjectForm(request.POST, request.FILES)
         if form.is_valid():
             # form save with logged in user
             fmirror = form.save(commit=False)
-            fmirror.user=request.user
+            fmirror.user = request.user
             fmirror.save()
+            messages.success(request, f'Your new project has been added')
+            return redirect(reverse('main:add_project'))    # messages must be on tamplate!
         return render(request,'main/add_project.html',{'form':form})
+
 
 
 
