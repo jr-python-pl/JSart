@@ -4,15 +4,26 @@
 <head>
   <meta charset="utf-8">
   <title>{{projects.title}}</title>
+
+  <style>
+    .projectObject {
+      width: 50vw;
+      height: 50vh;
+
+    }
+  </style>
 </head>
 
 <body>
- 
-  {% if projects %}
-  <a href=" {% url 'main:runscript' projects.id %}" class="btn btn-primary text-white"><img src="{{projects.thumbnail.url}}" class="img-fluid img-gray" alt="project thumbnail"></a>
 
-  
-</br>
+  {% if projects %}
+
+  <iframe class="projectObject" src="{% url 'main:runscript' projects.id %}"
+    sandbox="allow-forms allow-modals allow-pointer-lock allow-popups allow-presentation allow-same-origin allow-scripts"
+    allowfullscreen="true">
+  </iframe>
+
+  </br>
   {{projects.description}}
 
   {% endif %}
@@ -27,11 +38,11 @@
   <form action="#" method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Rate this project</button>
+    <button type="submit" class="btn btn-primary">Rate this project</button>
   </form>
 
   {% endif %}
-  
+
 </body>
 
 </html>
