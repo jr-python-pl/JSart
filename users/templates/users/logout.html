@@ -2,28 +2,30 @@
 {% block title %}logout{% endblock %}
 {% block content %}
 
-    <section>
-       <div class="container">
-          <div class="row">
-             <div class="col-md-12">
-                <h1> You have been logged out</h1>
-                    <div class="container" style="width: 400px">
+<section>
+   <div class="container">
+      <div class="row">
+         <div class="col-lg-6 col-md-10 col-12 text-center">
+            <h2 class="section-header"> You have been logged out</h2>
+            <div class="container" style="width: 400px">
 
-                        <div class="border-top pt-3">
-                            <small class="text muted">
-                                <a class="ml-2" href="{% url 'login' %}">Log In Again</a>
-                            </small>
-                        </div>
-                    </div>
-             </div>
-          </div>
-            <hr>
-          <div class="row margin-top-45">
-             <div class="col-md-12">
-                <!-- <img class="img-responsive margin-top-45" src="img/5.jpg" alt="me"> -->
-             </div>
-          </div>
-       </div>
-    </section>
+               <div class="border-top pt-3 text-center">
+                  <small class="text muted">
+                     <a class=" btn btn-primary text-white" href="{% url 'login' %}">Log In Again</a>
+                  </small>
+                  <hr>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- Is this below needed for some reasons? -->
+      <div class="row margin-top-45">
+         <div class="col-md-12">
+            <!-- <img class="img-responsive margin-top-45" src="img/5.jpg" alt="me"> -->
+         </div>
+      </div>
+      <!-- To this point -->
+   </div>
+</section>
 
 {% endblock %}

@@ -32,6 +32,10 @@ class PortfolioView(View):
         return render(request, 'main/portfolio.html', {'projects':Project.objects.all()})
 
 
+class RunProjectScript(View):
+    def get(self, request, id): 
+        return render(request, 'main/RunProjectScript.html',{'project': Project.objects.get(id=id)})
+
 class ProjectView(View):
 
     def get(self, request, id):

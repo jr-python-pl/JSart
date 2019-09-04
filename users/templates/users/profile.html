@@ -2,35 +2,38 @@
 {% load static %}
 {% block content %}
 
-    <section>
-       <div class="container"></br></br>
-            {% if request.user.is_authenticated and author.username == user.username %}
-                <h2><a href=" {% url 'main:add_project' %} ">Add new project</a> </h2>
-                <h2><a href=" {% url 'profile_edit' author.username %} ">Edit Profile</a> </h2>
+<section>
+    <div class="container">
+        <br />
+        {% if request.user.is_authenticated and author.username == user.username %}
+        <h3><a class="btn btn-outline-warning" href=" {% url 'main:add_project' %} ">Add new project</a>
+        </h3>
+        <h3><a class="btn btn-outline-warning" href=" {% url 'profile_edit' author.username %} ">Edit Profile</a> </h3>
+        <br />
 
-                {{user.username}}
+        {{user.username}}
 
-                {% if user.image %}
-                    <p><img alt = "author photo" src="{{ user.image.url }}" height="225"/></p>
-                {% else %}
-                    <p><img src="{% static 'main/img/default_user_pic.jpeg' %}" alt="user pic"></p>
-                {% endif %}</br>
+        {% if user.image %}
+        <p><img alt="author photo" src="{{ user.image.url }}" height="225" /></p>
+        {% else %}
+        <p><img src="{% static 'main/img/default_user_pic.jpeg' %}" alt="user pic"></p>
+        {% endif %}</br>
 
-                {{author.cv}}
+        {{author.cv}}
 
-            {% else %}
+        {% else %}
 
-                {{author.username}}
+        {{author.username}}
 
-                {% if author.image %}
-                    <p><img alt = "author photo" src="{{ author.image.url }}" height="225"/></p>
-                {%else%}
-                    <p><img src="{% static 'main/img/default_user_pic.jpeg' %}" alt="user pic"></p>
-                {%endif%}</br>
-            {{author.cv}}
-            {%endif%}
+        {% if author.image %}
+        <p><img alt="author photo" src="{{ author.image.url }}" height="225" /></p>
+        {%else%}
+        <p><img src="{% static 'main/img/default_user_pic.jpeg' %}" alt="user pic"></p>
+        {%endif%}</br>
+        {{author.cv}}
+        {%endif%}
     </div>
 
- </section>
+</section>
 
 {% endblock %}
