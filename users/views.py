@@ -1,4 +1,4 @@
-from django.contrib.auth.views import PasswordChangeView, PasswordChangeDoneView
+from django.contrib.auth.views import PasswordChangeView, PasswordChangeDoneView, PasswordResetView
 from django.shortcuts import render, redirect
 from django.urls import reverse, reverse_lazy
 from django.views import View
@@ -17,6 +17,11 @@ class ChangePasswordView(PasswordChangeView):
 
 class ChangePasswordDone(PasswordChangeDoneView):
     template_name = 'users/password_change_done.html'
+
+class ResetPasswordView(PasswordResetView):
+    email_template_name = 'users/password_reset_email.html'
+    subject_template_name = 'users/password_reset_subject.txt'
+    template_name = 'users/password_reset_form.html'
 
 
 class RegisterView(View):

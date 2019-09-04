@@ -7,13 +7,13 @@
      <div class="container form-container text-left">
           <div class="col-lg-6 col-md-10 col-12">
                {% if request.user.is_authenticated %}
-               <h3><a class="btn btn-outline-warning" href=" {% url 'main:add_project' %} ">Add new project</a> </h3>
+                    <h3><a class="btn btn-outline-warning" href=" {% url 'main:add_project' %} ">Add new project</a> </h3>
                {% endif %}
                {{author.username}}
                {% if author.image %}
-               <p><img alt="author photo" src="{{ author.image.url}}" height="225" /></p>
+                    <p><img alt="author photo" src="{{ author.image.url}}" height="225" /></p>
                {%else%}
-               <p><img src="{% static 'main/img/default_user_pic.jpeg' %}" alt="user pic"></p>
+                    <p><img src="{% static 'main/img/default_user_pic.jpeg' %}" alt="user pic"></p>
                {%endif%}
                <br>
                <p><a href="{% url 'password-change' %}">Change Password</a></p>
