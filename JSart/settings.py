@@ -141,3 +141,10 @@ MEDIA_ROOT = 'media/'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
 # EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
+
+# EMAIL_HOST = 'smtp.sendgrid.net'
+# EMAIL_PORT = 587
+# EMAIL_HOST_USER = 'testsite_app'
+# EMAIL_HOST_PASSWORD = 'mys3cr3tp4ssw0rd'
+# EMAIL_USE_TLS = True
+# DEFAULT_FROM_EMAIL = 'JSart Team <noreply@example.com>'
