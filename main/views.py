@@ -44,6 +44,7 @@ class ProjectView(View):
 
     def post(self, request, id):
         project1 = Project.objects.get(id=id)
+        vote = False
         
         '''
          lines below to check if there is one or more rating given 
@@ -72,7 +73,7 @@ class ProjectView(View):
             project1.average_rating = project1.mean_method()
             project1.save()
 
-        vote = True
+            vote = True
         return render(request, 'main/project_view.html', {'projects': Project.objects.get(id=id), 'vote': vote , 'user_vote':user_vote})
 
 
