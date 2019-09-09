@@ -1,3 +1,10 @@
+{% extends "main/base.html" %}
+{% load static %}
+{% block content %}
+{% load new_tags %}
+
+
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
@@ -27,11 +34,12 @@
   {{projects.description}}
 
   {% endif %}
+  {% if request.user.is_authenticated and user_vote is not True  %}
 
-  {% if vote %}
-  <!-- <br> -->
-  <p>Your vote was sent</p>
-  {% else %}
+    {% if vote %}
+      <!-- <br> -->
+      <p>Your vote was sent</p>
+    {% else %}
   <h4>
     Rating
   </h4>
@@ -41,8 +49,10 @@
     <button type="submit" class="btn btn-primary">Rate this project</button>
   </form>
 
+    {% endif %}
   {% endif %}
 
 </body>
 
 </html>
+{% endblock %}

@@ -13,6 +13,8 @@
       <br>
       {% for p in projects %}
       <p>Author : {{p.user}} </p>
+     
+      <a href=" {% url 'main:project_view' p.id %}"><img src="{{p.thumbnail.url}}" class="img-fluid img-gray" alt="project thumbnail"></a> </p>
       <p>Project : <a href=" {% url 'main:project_view' p.id %}">{{p.title}}</a> </p>
 
       <p>Rating : {{p.average_rating}} </p>
