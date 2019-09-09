@@ -44,3 +44,4 @@ class ProfileEditForm(forms.ModelForm):
     class Meta:
         model = CustomUser
         fields = ['cv','email','image']
+

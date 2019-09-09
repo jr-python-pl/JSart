@@ -1,10 +1,7 @@
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-
-
-from main.views import Home, ContactEmail, AboutView, PortfolioView, ProjectView, ProjectFormView, AuthorsView, SuccessView
-
+from main.views import Home, ContactEmail, AboutView, PortfolioView, ProjectView, AddProjectView, AuthorsView, SuccessView,RunProjectScript
 
 
 app_name = 'main'
@@ -12,11 +9,12 @@ urlpatterns = [
 
     path('main/', Home.as_view(), name="home"),
     path('project/<int:id>', ProjectView.as_view(), name="project_view"),
+    path('run_project/<int:id>', RunProjectScript.as_view(), name="runscript"),
     path('portfolio/', PortfolioView.as_view(), name="portfolio"),
     path('about/', AboutView.as_view(), name="about"),
     path('contact/', ContactEmail.as_view(), name="contact"),
     path('success/', SuccessView.as_view(), name='success'),
-    path('add_project/', ProjectFormView.as_view(), name="add_project"),
+    path('add_project/', AddProjectView.as_view(), name="add_project"),
 
     #authors
     path('authors/', AuthorsView.as_view(), name="authors"),

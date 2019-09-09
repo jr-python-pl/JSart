@@ -13,7 +13,7 @@ class Rating(models.Model):
 
     rating = models.PositiveSmallIntegerField(choices=rvalues)
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
-    who_rated = models.ForeignKey(CustomUser,on_delete=models.CASCADE,null =False , blank=False)
+    who_rated = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=False, blank=False)
 
     def __str__(self):
         return str(self.who_rated)
