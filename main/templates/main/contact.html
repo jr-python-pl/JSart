@@ -1,5 +1,6 @@
 {% extends 'main/base.html' %}
 {% load crispy_forms_tags %}
+{% load i18n %}
 
 {% block title %}Contact{% endblock %}
 {% block content %}
@@ -8,12 +9,12 @@
    <div class="container form-container text-center">
       <div class="col-lg-6 col-md-10 col-12">
 
-         <h2 class="section-header">Contacto.......</h2>
+         <h2 class="section-header">{% trans 'Contact us ...' %}</h2>
 
          <form action="#" method="post" class="margin-top-30 text-left">
             {% csrf_token %}
             {{ form|crispy }}
-            <button type="submit" class="btn btn-primary">Send Message</button>
+            <button type="submit" class="btn btn-primary">{% trans 'Send Message' %}</button>
          </form>
       </div>
 

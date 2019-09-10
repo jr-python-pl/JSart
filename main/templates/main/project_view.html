@@ -2,6 +2,7 @@
 {% load static %}
 {% block content %}
 {% load new_tags %}
+{% load i18n %}
 
 
 
@@ -32,25 +33,26 @@
 
   </br>
   {{projects.description}}
+  
 
   {% endif %}
   {% if request.user.is_authenticated and user_vote is not True  %}
-
-    {% if vote %}
-      <!-- <br> -->
-      <p>Your vote was sent</p>
-    {% else %}
+  {% if vote %}
+  <!-- <br> -->
+  <p>{% trans 'Your vote was sent' %}</p>
+  {% else %}
   <h4>
     Rating
   </h4>
   <form action="#" method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit" class="btn btn-primary">Rate this project</button>
+    <button type="submit" class="btn btn-primary">{% trans 'Rate this project' %}</button>
   </form>
 
     {% endif %}
   {% endif %}
+    
 
 </body>
 
