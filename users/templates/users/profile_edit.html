@@ -1,5 +1,6 @@
 {% extends "main/base.html" %}
 {% load static %}
+{% load i18n %}
 {% block content %}
 {% load crispy_forms_tags %}
 
@@ -7,7 +8,7 @@
      <div class="container form-container text-left">
           <div class="col-lg-6 col-md-10 col-12">
                {% if request.user.is_authenticated %}
-                    <h3><a class="btn btn-outline-warning" href=" {% url 'main:add_project' %} ">Add new project</a> </h3>
+                    <h3><a class="btn btn-outline-warning" href=" {% url 'main:add_project' %} ">{ % trans 'Add new project' %}</a> </h3>
                {% endif %}
                {{author.username}}
                {% if author.image %}
@@ -16,12 +17,12 @@
                     <p><img src="{% static 'main/img/default_user_pic.jpeg' %}" alt="user pic"></p>
                {%endif%}
                <br>
-               <p><a href="{% url 'password-change' %}">Change Password</a></p>
+               <p><a href="{% url 'password-change' %}">{ % trans 'Change Password' %}</a></p>
 
                <form action="." method='post'>
                     {% csrf_token %}
                     {{form|crispy}}
-                    <button type="submit" class="btn btn-primary">Update</button>
+                    <button type="submit" class="btn btn-primary">{ % trans 'Update' %}</button>
                </form>
 
           </div>

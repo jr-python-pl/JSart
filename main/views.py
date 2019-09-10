@@ -107,7 +107,7 @@ class SuccessView(View):
 class AboutView(View):
 
     def get(self, request):
-        return render(request, 'main/contact.html')
+        return render(request, 'main/about.html')
 
 
 class AddProjectView(LoginRequiredMixin, View):
