@@ -6,7 +6,7 @@
 
 
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
 <head>
@@ -22,39 +22,39 @@
   </style>
 </head>
 
-<body>
+<body> -->
 
-  {% if projects %}
+{% if projects %}
 
-  <iframe class="projectObject" src="{% url 'main:runscript' projects.id %}"
-    sandbox="allow-forms allow-modals allow-pointer-lock allow-popups allow-presentation allow-same-origin allow-scripts"
-    allowfullscreen="true">
-  </iframe>
+<iframe class="projectObject" src="{% url 'main:runscript' projects.id %}"
+  sandbox="allow-forms allow-modals allow-pointer-lock allow-popups allow-presentation allow-same-origin allow-scripts"
+  allowfullscreen="true">
+</iframe>
 
-  </br>
-  {{projects.description}}
-  
+</br>
+{{projects.description}}
 
-  {% endif %}
-  {% if request.user.is_authenticated and user_vote is not True  %}
-  {% if vote %}
-  <!-- <br> -->
-  <p>{% trans 'Your vote was sent' %}</p>
-  {% else %}
-  <h4>
-    Rating
-  </h4>
-  <form action="#" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-primary">{% trans 'Rate this project' %}</button>
-  </form>
 
-    {% endif %}
-  {% endif %}
-    
+{% endif %}
+{% if request.user.is_authenticated and user_vote is not True  %}
+{% if vote %}
 
-</body>
+<p>{% trans 'Your vote was sent' %}</p>
+{% else %}
+<h4>
+  Rating
+</h4>
+<form action="#" method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit" class="btn btn-primary">{% trans 'Rate this project' %}</button>
+</form>
 
-</html>
+{% endif %}
+{% endif %}
+
+
+<!-- </body>
+
+</html> -->
 {% endblock %}
