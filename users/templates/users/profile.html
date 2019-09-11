@@ -1,13 +1,14 @@
 {% extends "main/base.html" %}
 {% load static %}
+{% load i18n %}
 {% block content %}
 
 <section>
     <div class="container">
         <br>
         {% if request.user.is_authenticated and author.username == user.username %}
-            <h3><a class="btn btn-outline-warning" href=" {% url 'main:add_project' %} ">Add new project</a></h3>
-            <h3><a class="btn btn-outline-warning" href=" {% url 'profile_edit' author.username %} ">Edit Profile</a> </h3>
+            <h3><a class="btn btn-outline-warning" href=" {% url 'main:add_project' %} ">{% trans 'Add new project' %}</a></h3>
+            <h3><a class="btn btn-outline-warning" href=" {% url 'profile_edit' author.username %} ">{% trans 'Edit Profile' %}</a> </h3>
             <br>
             {{user.username}}
             {% if user.image %}
