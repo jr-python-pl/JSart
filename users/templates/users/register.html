@@ -1,43 +1,42 @@
 {% extends 'main/base.html' %}
+{% load i18n %}
 {% load crispy_forms_tags %}
 {% block title %}Registration{% endblock %}
 {% block content %}
 
-    <section>
-       <div class="container">
-          <div class="row">
-             <div class="col-md-12">
-              <h1>
-                 Register to publish your work, <br>
-                 Be able to join contests!
-              </h1>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-10 col-12">
+                <h1 class="section-header display-6">
+                    {% trans 'Register to publish your work,'%} <br>
+                    {% trans 'Be able to join contests!'%}
+                </h1>
                 <div class="container form-group" style="width: 400px">
                     <h3 class="info-title"></h3>
-                        <h4><form method="POST">
+                    <h4>
+                        <form method="POST">
                             {% csrf_token %}
                             {{ form|crispy }}
                             <div>
-                                <button type="submit">Register now</button>
+                                <button type="submit" class="btn btn-primary">{% trans 'Register now' %}</button>
                             </div>
-                            </form>
-                        </h4>
+                        </form>
+                    </h4>
 
                     <div class="border-top pt-3">
                         <small class="text muted">
-                            Already Have An Account? <a class="ml-2" href="{% url 'login' %}">Log in</a>
+                            {% trans 'Already Have An Account?' %} <a class="ml-2"
+                                href="{% url 'login' %}">{% trans 'Log in' %} </a>
                         </small>
                     </div>
                 </div>
                 <hr>
-          </div>
-          <div class="row margin-top-45">
-             <div class="col-md-12">
-                <!-- <img class="img-responsive margin-top-45" src="img/5.jpg" alt="me"> -->
-             </div>
-          </div>
-       </div>
-       </div>
-    </section>
+            </div>
+
+        </div>
+    </div>
+</section>
 
 {% endblock %}
 

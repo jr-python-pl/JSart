@@ -1,32 +1,60 @@
-<!DOCTYPE html>
+{% extends "main/base.html" %}
+{% load static %}
+{% block content %}
+{% load new_tags %}
+{% load i18n %}
+
+
+
+<!-- <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
 <head>
   <meta charset="utf-8">
   <title>{{projects.title}}</title>
+
+  <style>
+    .projectObject {
+      width: 50vw;
+      height: 50vh;
+
+    }
+  </style>
 </head>
 
-<body>
+<body> -->
 
-  {% if projects %}
-  {{projects.body|safe}}
+{% if projects %}
 
-  {% endif %}
+<iframe class="projectObject" src="{% url 'main:runscript' projects.id %}"
+  sandbox="allow-forms allow-modals allow-pointer-lock allow-popups allow-presentation allow-same-origin allow-scripts"
+  allowfullscreen="true">
+</iframe>
 
-  {% if vote %}
-  <!-- <br> -->
-  <p>Your vote was sent</p>
-  {% else %}
-  <h4>
-    Rating
-  </h4>
-  <form action="#" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Rate this project</button>
-  </form>
+</br>
+{{projects.description}}
 
-  {% endif %}
-</body>
 
-</html>
+{% endif %}
+{% if request.user.is_authenticated and user_vote is not True  %}
+{% if vote %}
+
+<p>{% trans 'Your vote was sent' %}</p>
+{% else %}
+<h4>
+  Rating
+</h4>
+<form action="#" method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit" class="btn btn-primary">{% trans 'Rate this project' %}</button>
+</form>
+
+{% endif %}
+{% endif %}
+
+
+<!-- </body>
+
+</html> -->
+{% endblock %}

@@ -1,5 +1,7 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.utils.translation import ugettext_lazy as _
+
 
 
 def image_dir_path(instance, filename):
@@ -10,8 +12,8 @@ def image_dir_path(instance, filename):
 
 class CustomUser(AbstractUser):
 
-    email = models.EmailField(verbose_name='Adres Email', unique=True)
-    cv = models.TextField(verbose_name="Coś o sobie...", blank=True)
+    email = models.EmailField(_('email adress'), unique=True)
+    cv = models.TextField(_("Few words about you..."), blank=True)
     image = models.ImageField(upload_to=image_dir_path, null=True, blank=True)
 
     class Meta:

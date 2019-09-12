@@ -1,6 +1,8 @@
-<!doctype html>
+
 
 {% load static %}
+{% load i18n %}
+<!doctype html>
 
 <html>
 
@@ -12,11 +14,19 @@
    <meta name="description" content="">
    <meta name="author" content="">
 
+   <link href="https://fonts.googleapis.com/css?family=Montserrat|Open+Sans:300,400&display=swap" rel="stylesheet">
+
    <!-- Bootstrap CSS -->
 
-   <link rel="stylesheet" type="text/css" href="{% static 'main/css/bootstrap.css' %}">
-   <link rel="stylesheet" type="text/css" href="{% static 'main/css/bootstrap.min.css' %}">
-   <link rel="stylesheet" type="text/css" href="{% static 'main/css/lightbox.css' %}">
+   <!-- Zastąpione pliki bootstrapa3 -->
+   <!-- <link rel="stylesheet" type="text/css" href="{% static 'main/css/bootstrap.css' %}">
+   <link rel="stylesheet" type="text/css" href="{% static 'main/css/bootstrap.min.css' %}"> -->
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+   <!-- <link rel="stylesheet" type="text/css" href="{% static 'main/css/lightbox.css' %}"> -->
+
    <link rel="stylesheet" type="text/css" href="{% static 'main/css/style.css' %}">
 
 
@@ -27,44 +37,50 @@
 
 <body>
 
+   <div class="circle">
+      <div class="circle-lg"></div>
+      <div class="circle-sm"></div>
+      <div class="circle-blue"></div>
+      <div class="circle-gold"></div>
+   </div>
+
    <!-- right corner navbar  -->
-   <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="col-md-12">
-         <div class="nav">
-            <button class="btn-nav">
-               <span class="icon-bar inverted top"></span>
-               <span class="icon-bar inverted middle"></span>
-               <span class="icon-bar inverted bottom"></span>
-            </button>
-         </div>
+   <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+      <div class="container">
          <a class="navbar-brand" href="{% url 'main:home' %}">
             <img class="logo" src="{% static 'main/img/logo.png' %}" alt="logo">
          </a>
-         <div class="nav-content hideNav hidden">
-            <ul class="nav-list vcenter">
-               <li class="nav-item"><a class="item-anchor" href="{% url 'main:home' %}">Home</a></li>
-               <li class="nav-item"><a class="item-anchor" href="{% url 'main:portfolio' %}">Portfolio</a></li>
-               <li class="nav-item"><a class="item-anchor" href="{% url 'main:authors'  %}">Authors</a></li>
-               <li class="nav-item"><a class="item-anchor" href="{% url 'ranking:ranking' %}">Ranking</a></li>
-               <li class="nav-item"><a class="item-anchor" href="{% url 'main:contact' %}">Contact</a></li>
-               <li class="nav-item"><a class="item-anchor" href="{% url 'main:about' %}">About</a></li>
+         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+         </button>
+
+         <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+               <li class="nav-item"><a class="nav-link" href="{% url 'main:home' %}">{% trans 'Home' %}</a></li>
+               <li class="nav-item"><a class="nav-link" href="{% url 'main:portfolio' %}">{% trans 'Projects' %}</a></li>
+               <li class="nav-item"><a class="nav-link" href="{% url 'main:authors'  %}">{% trans 'Authors' %}</a></li>
+               <li class="nav-item"><a class="nav-link" href="{% url 'ranking:ranking' %}">{% trans 'Ranking' %}</a></li>
+               <li class="nav-item"><a class="nav-link" href="{% url 'main:contact' %}">{% trans 'Contact' %}</a></li>
+               <li class="nav-item"><a class="nav-link" href="{% url 'main:about' %}">{% trans 'About' %}</a></li>
 
                {% if request.user.is_authenticated %}
-               <li class="nav-item"><a class="item-anchor" href="{% url 'profile' user.username %}">Profile</a></li>
-               <li class="nav-item">{{ request.user }} / <a href="{% url 'logout' %}"> Log out </a> </li>
+               <li class="nav-item"><a class="nav-link" href="{% url 'profile' user.username %}">{% trans 'Profile' %}</a></li>
+               <li class="nav-item">
+                  <span class="ml-lg-5 small">{{ request.user }} /</span> <a class="nav-link small"
+                     href="{% url 'logout' %}">{% trans 'Logout' %}</a>
+               </li>
 
 
                {% else %}
                <li class="nav-item">
-                  <a href="{% url 'login' %}">Login</a> / <a href="{% url 'register' %}">Sign in</a>
+                  <a class="nav-link small" href="{% url 'login' %}">{% trans 'Login' %}</a>
+                  <span>/</span> <a class="nav-link small" href="{% url 'register' %}">{% trans 'Sign in' %}</a>
                </li>
 
                {% endif %}
-
-
             </ul>
          </div>
-
       </div>
    </nav>
 
@@ -87,8 +103,21 @@
       }
    </script>
 
-   <script src="{% static 'main/js/jquery.js' %}"></script>
-   <script src="{% static 'main/js/bootstrap.min.js' %}"></script>
+   <!-- Zastąpione pliki bootstrapa3  -->
+   <!-- <script src="{% static 'main/js/jquery.js' %}"></script>
+   <script src="{% static 'main/js/bootstrap.min.js' %}"></script> -->
+
+   <!-- Bootstrap 4 -->
+   <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+   </script>
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+   </script>
+   <!--  -->
+
    <script src="{% static 'main/js/menu-color.js' %}"></script>
    <script src="{% static 'main/js/modernizr.js' %}"></script>
    <script src="{% static 'main/js/script.js' %}"></script>

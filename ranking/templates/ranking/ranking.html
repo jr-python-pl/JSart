@@ -1,19 +1,21 @@
 {% extends "main/base.html" %}
 {% load static %}
+{% load i18n %}
 <!--
 {% load new_tags %} -->
 <!-- registered new filter -->
 {% block content %}
 
-<!-- 
-</br></br></br> -->
 <section>
    <div class="container">
-      <h3>Top 10 Projects</h3>
+      <h3>{% trans 'Top 10 Projects' %}</h3>
       <br>
       {% for p in projects %}
-      <p>Author : {{p.user}} </p>
-      <p>Project : <a href=" {% url 'main:project_view' p.id %}">{{p.title}}</a> </p>
+      <p>{% trans 'Author' %} : {{p.user}} </p>
+
+      <a href=" {% url 'main:project_view' p.id %}"><img src="{{p.thumbnail.url}}" class="img-fluid img-gray"
+            alt="project thumbnail"></a> </p>
+      <p>{% trans 'Project' %} : <a href=" {% url 'main:project_view' p.id %}">{{p.title}}</a> </p>
 
       <p>Rating : {{p.average_rating}} </p>
       <p>----------</p>
