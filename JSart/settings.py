@@ -8,7 +8,9 @@ https://docs.djangoproject.com/en/2.2/topics/settings/
 
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
+
 """
+from django.utils.translation import ugettext_lazy as _
 import json
 import os
 
@@ -57,7 +59,15 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.locale.LocaleMiddleware'  # translation activation
 ]
-
+# Provide a lists of languages which your site supports.
+LANGUAGES = (
+    ('en', _('English')),
+    ('pl', _('Polish')),
+)
+# project's translation files .
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale'),
+)
 ROOT_URLCONF = 'JSart.urls'
 
 import os
@@ -118,7 +128,7 @@ AUTH_USER_MODEL = 'users.CustomUser'
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
-LANGUAGE_CODE = 'pl-pl'
+LANGUAGE_CODE = 'en'
 
 TIME_ZONE = 'UTC'
 

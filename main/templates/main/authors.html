@@ -1,5 +1,6 @@
 {% extends "main/base.html" %}
 {% load static %}
+{% load i18n %}
 {% load new_tags %}
 <!-- registered new filter -->
 {% block content %}
@@ -7,7 +8,7 @@
 <section>
     <div class="container text-center">
 
-        <h2 class="section-header">Authors of JS code </h2>
+        <h1 class="section-header display-6">{% trans 'Authors of JS code' %} </h1>
         <br />
         <div class="authors-container">
 

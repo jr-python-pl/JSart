@@ -2,9 +2,6 @@
 {% load crispy_forms_tags %}
 {% block content %}
 
-<!-- </br></br></br>
-</br></br></br> -->
-
 <section>
   <div class="container form-container text-left">
     <div class="col-lg-6 col-md-10 col-12">
@@ -19,9 +16,9 @@
       {% endif %}
 
 
-      <h2 class="section-header">
-        Add new Project ....
-      </h2>
+      <h1 class="section-header display-6">
+        Add new Project
+      </h1>
 
       <form enctype='multipart/form-data' method="POST">
         {% csrf_token %}
