@@ -19,7 +19,9 @@
             <p><img src="{% static 'main/img/default_user_pic.jpeg' %}" alt="user pic"></p>
             {% endif %}<br>
             {{author.cv}}
-            {% else %}
+            </br>
+            {{author.email}}
+        {% else %}
             {{author.username}}
             {% if author.image %}
             <p><img alt="author photo" src="{{ author.image.url }}" height="225" /></p>
@@ -28,6 +30,9 @@
             {% endif %}</br>
             <p> {{author.cv}} </p>
 
+            {{author.cv}}
+            </br>
+            {{author.email}}
 
 
             {%endif%}

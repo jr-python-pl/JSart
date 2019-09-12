@@ -28,8 +28,8 @@ urlpatterns = [
     path('reset/done', auth_views.PasswordResetCompleteView.as_view(
         template_name='users/password_reset_complete.html'), name="password_reset_complete"),
 
-    path('profile/<username>', users_views.ProfileView.as_view(), name='profile'),
-    path('profile/<username>/edit', users_views.ProfileEditView.as_view(), name="profile_edit"),
+    path('profile/<username>/', users_views.ProfileView.as_view(), name='profile'),
+    path('profile/<username>/edit/', users_views.ProfileEditView.as_view(), name="profile_edit"),
 
     path('', include('main.urls')),
     path('', include('ranking.urls')),

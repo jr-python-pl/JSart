@@ -17,8 +17,7 @@
                {% if request.user.is_authenticated %}
 
                <!-- this h3/button propably isn't needed here. Remove it? -->
-               <h3><a class="btn btn-outline-warning" href=" {% url 'main:add_project' %} ">{ % trans 'Add new project'
-                         %}</a> </h3>
+               <h3><a class="btn btn-outline-warning" href=" {% url 'main:add_project' %} ">{% trans 'Add new project'%}</a> </h3>
 
                <!-- shouldn't this endif be on the end of the div? -->
 
@@ -31,12 +30,12 @@
                <p><img src="{% static 'main/img/default_user_pic.jpeg' %}" alt="user pic"></p>
                {%endif%}
                <br>
-               <p><a href="{% url 'password-change' %}">{ % trans 'Change Password' %}</a></p>
+               <p><a href="{% url 'password-change' %}">{% trans 'Change Password' %}</a></p>
 
-               <form action="." method='post'>
+               <form action="." method='post' enctype="multipart/form-data">
                     {% csrf_token %}
                     {{form|crispy}}
-                    <button type="submit" class="btn btn-primary">{ % trans 'Update' %}</button>
+                    <button type="submit" class="btn btn-primary">{% trans 'Update' %}</button>
 
                     <!-- submitting form not working (404 error after click) -->
 

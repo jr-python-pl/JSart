@@ -14,7 +14,7 @@ class CustomUser(AbstractUser):
 
     email = models.EmailField(_('email adress'), unique=True)
     cv = models.TextField(_("Few words about you..."), blank=True)
-    image = models.ImageField(upload_to=image_dir_path, null=True, blank=True)
+    image = models.ImageField(_("photo"),upload_to=image_dir_path, null=True, blank=True)
 
     class Meta:
         verbose_name = 'author'
