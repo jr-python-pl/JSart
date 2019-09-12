@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-12 07:13+0000\n"
+"POT-Creation-Date: 2019-09-12 22:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,8 +41,6 @@ msgid "Untitled"
 msgstr "Bez Tytułu"
 
 #: main/models.py:8
-#, fuzzy
-#| msgid "Title :"
 msgid "Title"
 msgstr "Tytuł :"
 
@@ -59,22 +57,19 @@ msgid "thumbnail"
 msgstr "miniaturka"
 
 #: main/templates/main/about.html:11
-msgid ""
-"Java Script art Innovating Gui and games , interactive media art , JS as new "
-"\"must have\" skill in modern art and design"
+msgid "Java Script art Innovating Gui and games , interactive media art , "
 msgstr ""
-"Java Script art , innowacyjne interfejsy użytkownika , niekonencjonalne "
-"gry , interaktywna sztuka nowych mediów "
+"Innowacyjne gry i interfejsy uzytkowanika , interaktywna sztuka nowych mediów"
+
+#: main/templates/main/about.html:13
+msgid "JS as new \"must have\" skill in modern art and design"
+msgstr " Java script jako narzędzie dla współczesnych artystów i designerów"
 
 #: main/templates/main/add_project.html:24
-#, fuzzy
-#| msgid "Add new project"
 msgid "Add new Project ...."
 msgstr "Dodaj nowy projekt"
 
 #: main/templates/main/add_project.html:30
-#, fuzzy
-#| msgid "Add new project"
 msgid "Add new one ..."
 msgstr "Dodaj nowy projekt"
 
@@ -150,52 +145,6 @@ msgstr "Twoja ocena została wysłana.."
 msgid "Rate this project"
 msgstr "Oceń projekt"
 
-#: main/urls.py:11
-msgid "main/"
-msgstr ""
-
-#: main/urls.py:12
-msgid "project/<int:id>"
-msgstr "projekt/<int:id>"
-
-#: main/urls.py:13
-msgid "run_project/<int:id>"
-msgstr "skypt/<int:id>"
-
-#: main/urls.py:14
-#, fuzzy
-#| msgid "Projects"
-msgid "projects/"
-msgstr "projekty/"
-
-#: main/urls.py:15
-#, fuzzy
-#| msgid "About"
-msgid "about/"
-msgstr "JSart/"
-
-#: main/urls.py:16
-#, fuzzy
-#| msgid "Contact"
-msgid "contact/"
-msgstr "kontakt/"
-
-#: main/urls.py:17
-msgid "success/"
-msgstr ""
-
-#: main/urls.py:18
-#, fuzzy
-#| msgid "Add new project"
-msgid "add_project/"
-msgstr "nowy_projekt/"
-
-#: main/urls.py:21
-#, fuzzy
-#| msgid "Authors"
-msgid "authors/"
-msgstr "autorzy/"
-
 #: ranking/templates/ranking/ranking.html:13
 msgid "Top 10 Projects"
 msgstr "10 najwyżej ocenionych projektów"
@@ -208,12 +157,6 @@ msgstr "Autor"
 msgid "Project"
 msgstr "Projekt"
 
-#: ranking/urls.py:9
-#, fuzzy
-#| msgid "Ranking"
-msgid "ranking/"
-msgstr "ranking/"
-
 #: users/models.py:15
 msgid "email adress"
 msgstr "adres email"
@@ -221,6 +164,10 @@ msgstr "adres email"
 #: users/models.py:16
 msgid "Few words about you..."
 msgstr "Kilka słów o Tobie..."
+
+#: users/models.py:17
+msgid "photo"
+msgstr "foto"
 
 #: users/templates/users/login.html:12
 msgid "Login please to enjoy"
@@ -247,8 +194,6 @@ msgid "Need An Account?"
 msgstr "Chcesz założyć konto ?"
 
 #: users/templates/users/login.html:31
-#, fuzzy
-#| msgid "Register now"
 msgid "Register"
 msgstr "Zarejstruj"
 
@@ -257,8 +202,6 @@ msgid "You have been logged out"
 msgstr "Zostałeś wylogowany"
 
 #: users/templates/users/logout.html:15
-#, fuzzy
-#| msgid "Log in"
 msgid "Log In Again"
 msgstr "Zaloguj się"
 
@@ -285,8 +228,6 @@ msgid "Your password has been set. You may go ahead and"
 msgstr "Twoje hasło zostało zmienione"
 
 #: users/templates/users/password_reset_complete.html:15
-#, fuzzy
-#| msgid "Log in"
 msgid "log in"
 msgstr "Możesz się zalogować ..."
 
@@ -344,10 +285,8 @@ msgid "Edit Profile"
 msgstr "Edytuj Profil"
 
 #: users/templates/users/profile_edit.html:20
-#, fuzzy
-#| msgid "Change password"
 msgid "Change Password"
-msgstr "Zmień"
+msgstr "Zmień hasło"
 
 #: users/templates/users/profile_edit.html:25
 msgid "Update"

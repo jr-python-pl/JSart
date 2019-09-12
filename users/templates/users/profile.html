@@ -17,6 +17,8 @@
                 <p><img src="{% static 'main/img/default_user_pic.jpeg' %}" alt="user pic"></p>
             {% endif %}<br>
             {{author.cv}}
+            </br>
+            {{author.email}}
         {% else %}
             {{author.username}}
             {% if author.image %}
@@ -26,6 +28,8 @@
             {% endif %}</br>
 
             {{author.cv}}
+            </br>
+            {{author.email}}
 
         {%endif%}
     </div>
