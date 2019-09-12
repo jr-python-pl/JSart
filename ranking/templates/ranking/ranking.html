@@ -6,16 +6,15 @@
 <!-- registered new filter -->
 {% block content %}
 
-<!-- 
-</br></br></br> -->
 <section>
    <div class="container">
       <h3>{% trans 'Top 10 Projects' %}</h3>
       <br>
       {% for p in projects %}
       <p>{% trans 'Author' %} : {{p.user}} </p>
-     
-      <a href=" {% url 'main:project_view' p.id %}"><img src="{{p.thumbnail.url}}" class="img-fluid img-gray" alt="project thumbnail"></a> </p>
+
+      <a href=" {% url 'main:project_view' p.id %}"><img src="{{p.thumbnail.url}}" class="img-fluid img-gray"
+            alt="project thumbnail"></a> </p>
       <p>{% trans 'Project' %} : <a href=" {% url 'main:project_view' p.id %}">{{p.title}}</a> </p>
 
       <p>Rating : {{p.average_rating}} </p>
