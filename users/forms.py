@@ -32,7 +32,7 @@ class CustomUserChangeForm(UserChangeForm):
 class CustomUserRegisterForm(UserCreationForm):
 
     email = forms.EmailField(required=True, label='Email')
-    cv = forms.CharField(widget=forms.Textarea(attrs={'rows': 5, 'cols': 35}), label='Coś o sobie...')
+    cv = forms.CharField(widget=forms.Textarea(attrs={'rows': 5, 'cols': 35}), label='Few words about you...')
     image = forms.ImageField(required=False)
 
     class Meta:

@@ -1,4 +1,5 @@
 {% extends 'main/base.html' %}
+{% load i18n %}
 {% load crispy_forms_tags %}
 {% block title %}Registration{% endblock %}
 {% block content %}
@@ -7,10 +8,10 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-10 col-12">
-                <h2 class="section-header">
-                    Register to publish your work, <br>
-                    Be able to join contests!
-                </h2>
+                <h1 class="section-header display-6">
+                    {% trans 'Register to publish your work,'%} <br>
+                    {% trans 'Be able to join contests!'%}
+                </h1>
                 <div class="container form-group" style="width: 400px">
                     <h3 class="info-title"></h3>
                     <h4>
@@ -18,14 +19,15 @@
                             {% csrf_token %}
                             {{ form|crispy }}
                             <div>
-                                <button type="submit" class="btn btn-primary">Register now</button>
+                                <button type="submit" class="btn btn-primary">{% trans 'Register now' %}</button>
                             </div>
                         </form>
                     </h4>
 
                     <div class="border-top pt-3">
                         <small class="text muted">
-                            Already Have An Account? <a class="ml-2" href="{% url 'login' %}">Log in</a>
+                            {% trans 'Already Have An Account?' %} <a class="ml-2"
+                                href="{% url 'login' %}">{% trans 'Log in' %} </a>
                         </small>
                     </div>
                 </div>
