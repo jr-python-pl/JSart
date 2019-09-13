@@ -14,23 +14,18 @@
                     Edit Profile
                </h1>
 
-               {% if request.user.is_authenticated %}
-
                <!-- this h3/button propably isn't needed here. Remove it? -->
+               <!-- you are styling the template, you decide, please :)-->
                <h3><a class="btn btn-outline-warning" href=" {% url 'main:add_project' %} ">{% trans 'Add new project'%}</a> </h3>
-
-               <!-- shouldn't this endif be on the end of the div? -->
-
-               {% endif %}
 
                {{author.username}}
                {% if author.image %}
-               <p><img alt="author photo" src="{{ author.image.url}}" height="225" /></p>
+                    <p><img alt="author photo" src="{{ author.image.url}}" height="225" /></p>
                {%else%}
-               <p><img src="{% static 'main/img/default_user_pic.jpeg' %}" alt="user pic"></p>
+                    <p><img src="{% static 'main/img/default_user_pic.jpeg' %}" alt="user pic"></p>
                {%endif%}
                <br>
-               <p><a href="{% url 'password-change' %}">{% trans 'Change Password' %}</a></p>
+               <p><a class="btn btn-outline-warning" href="{% url 'password-change' %}">{% trans 'Change Password' %}</a></p>
 
                <form action="." method='post' enctype="multipart/form-data">
                     {% csrf_token %}
