@@ -1,9 +1,7 @@
 {% extends 'main/base.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
-
-<!-- </br></br></br>
-</br></br></br> -->
+{% load i18n %}
 
 <section>
   <div class="container form-container text-left">
@@ -19,14 +17,16 @@
       {% endif %}
 
 
-      <h2 class="section-header">
-        Add new Project ....
-      </h2>
+
+      <h1 class="section-header display-6">
+         {% trans "Add new Project ...." %}
+      </h1>
+
 
       <form enctype='multipart/form-data' method="POST">
         {% csrf_token %}
         {{form|crispy}}
-        <button type="submit" class="btn btn-primary">Add new one ...</button>
+        <button type="submit" class="btn btn-primary">{% trans "Add new one ..." %}</button>
       </form>
 
     </div>

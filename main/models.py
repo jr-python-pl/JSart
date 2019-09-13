@@ -1,13 +1,14 @@
 from django.db import models
 from users.models import CustomUser
+from django.utils.translation import ugettext_lazy as _
 
 
 class Project(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, verbose_name="author")
-    title = models.CharField(max_length=128, default='Untitled', verbose_name="Title")
-    description = models.TextField(verbose_name="description", blank=True)
-    body = models.TextField(verbose_name="script body" ,null =False , blank=False )
-    thumbnail = models.ImageField(upload_to='thumbs/', blank = False , null = False )
+    title = models.CharField(max_length=128, default=_('Untitled'), verbose_name=_("Title"))
+    description = models.TextField(verbose_name=_("description"), blank=True)
+    body = models.TextField(verbose_name=_("script body") ,null =False , blank=False )
+    thumbnail = models.ImageField(verbose_name=_("thumbnail"),upload_to='thumbs/', blank = False , null = False )
     average_rating = models.DecimalField(default=0, max_digits=4, decimal_places=2)
 
 

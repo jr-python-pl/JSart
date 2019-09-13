@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-10 19:42+0000\n"
+"POT-Creation-Date: 2019-09-12 22:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,13 +36,42 @@ msgstr "Tytuł"
 msgid "Message"
 msgstr "Wiadomość"
 
+#: main/models.py:8
+msgid "Untitled"
+msgstr "Bez Tytułu"
+
+#: main/models.py:8
+msgid "Title"
+msgstr "Tytuł :"
+
+#: main/models.py:9
+msgid "description"
+msgstr "kilka słów o projektcie"
+
+#: main/models.py:10
+msgid "script body"
+msgstr "Twój skrypt"
+
+#: main/models.py:11
+msgid "thumbnail"
+msgstr "miniaturka"
+
 #: main/templates/main/about.html:11
-msgid ""
-"Java Script art Innovating Gui and games , interactive media art , JS as new "
-"\"must have\" skill in modern art and design"
+msgid "Java Script art Innovating Gui and games , interactive media art , "
 msgstr ""
-"Java Script art , innowacyjne interfejsy użytkownika , niekonencjonalne "
-"gry , interaktywna sztuka nowych mediów "
+"Innowacyjne gry i interfejsy uzytkowanika , interaktywna sztuka nowych mediów"
+
+#: main/templates/main/about.html:13
+msgid "JS as new \"must have\" skill in modern art and design"
+msgstr " Java script jako narzędzie dla współczesnych artystów i designerów"
+
+#: main/templates/main/add_project.html:24
+msgid "Add new Project ...."
+msgstr "Dodaj nowy projekt"
+
+#: main/templates/main/add_project.html:30
+msgid "Add new one ..."
+msgstr "Dodaj nowy projekt"
 
 #: main/templates/main/authors.html:11
 msgid "Authors of JS code"
@@ -136,6 +165,10 @@ msgstr "adres email"
 msgid "Few words about you..."
 msgstr "Kilka słów o Tobie..."
 
+#: users/models.py:17
+msgid "photo"
+msgstr "foto"
+
 #: users/templates/users/login.html:12
 msgid "Login please to enjoy"
 msgstr "Zaloguj się aby korzystać z"
@@ -161,8 +194,6 @@ msgid "Need An Account?"
 msgstr "Chcesz założyć konto ?"
 
 #: users/templates/users/login.html:31
-#, fuzzy
-#| msgid "Register now"
 msgid "Register"
 msgstr "Zarejstruj"
 
@@ -171,8 +202,6 @@ msgid "You have been logged out"
 msgstr "Zostałeś wylogowany"
 
 #: users/templates/users/logout.html:15
-#, fuzzy
-#| msgid "Log in"
 msgid "Log In Again"
 msgstr "Zaloguj się"
 
@@ -199,8 +228,6 @@ msgid "Your password has been set. You may go ahead and"
 msgstr "Twoje hasło zostało zmienione"
 
 #: users/templates/users/password_reset_complete.html:15
-#, fuzzy
-#| msgid "Log in"
 msgid "log in"
 msgstr "Możesz się zalogować ..."
 
@@ -249,12 +276,21 @@ msgid "Reset"
 msgstr "Zmień"
 
 #: users/templates/users/profile.html:10
+#: users/templates/users/profile_edit.html:11
 msgid "Add new project"
 msgstr "Dodaj nowy projekt"
 
 #: users/templates/users/profile.html:11
 msgid "Edit Profile"
 msgstr "Edytuj Profil"
+
+#: users/templates/users/profile_edit.html:20
+msgid "Change Password"
+msgstr "Zmień hasło"
+
+#: users/templates/users/profile_edit.html:25
+msgid "Update"
+msgstr "Aktualizuj"
 
 #: users/templates/users/register.html:12
 msgid "Register to publish your work,"

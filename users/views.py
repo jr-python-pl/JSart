@@ -58,25 +58,21 @@ class ProfileView(View):
 class ProfileEditView(View):
 
     def get(self, request, username):
-        user = request.user
-        initial_data = {
-            "cv": user.cv,
-            "image": user.image,
-            "email": user.email
-        }
-
-        form = ProfileEditForm(initial=initial_data)
+       
+        form = ProfileEditForm(instance=request.user)
         return render(request, 'users/profile_edit.html',
                       {'author': CustomUser.objects.get(username=username), 'form': form})
 
-    def post(self, request):
-        form = ProfileEditForm(request.POST, request.FILES)
+    def post(self, request, username):
+        form = ProfileEditForm(request.POST, request.FILES,instance=request.user)
         if form.is_valid():
             fmirror = form.save(commit=False)
             fmirror.user = request.user
             fmirror.save()
-
-            return render(request, 'profile/profile_edit.html',
-                          {'author': CustomUser.objects.get(username=fmirror.username), 'form': form})
+            
+            
+            messages.success(request, f'Your Profile has been updated !')
+            
+        return render(request, 'users/profile_edit.html',{'author': CustomUser.objects.get(username=username), 'form': form})
 
 
