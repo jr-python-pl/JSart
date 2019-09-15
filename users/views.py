@@ -1,24 +1,26 @@
 from django.contrib.auth.views import PasswordChangeView, PasswordChangeDoneView, PasswordResetView
-from django.shortcuts import render, redirect
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.views import View
 from .forms import CustomUserCreationForm, ProfileEditForm
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required
 from .models import CustomUser
-
-from django.contrib.auth import login, authenticate
-# from main.forms import import MainUserCreationForm
 
 
 class ChangePasswordView(PasswordChangeView):
+
     success_url = reverse_lazy('password-change-done')
     template_name = 'users/password_change.html'
 
+
 class ChangePasswordDone(PasswordChangeDoneView):
+
     template_name = 'users/password_change_done.html'
 
+
 class ResetPasswordView(PasswordResetView):
+
     email_template_name = 'users/password_reset_email.html'
     subject_template_name = 'users/password_reset_subject.txt'
     template_name = 'users/password_reset_form.html'
@@ -48,14 +50,16 @@ class RegisterView(View):
         return render(request, 'users/register.html', {'form': form})
 
 
-class ProfileView(View):
+class ProfileView(LoginRequiredMixin, View):
 
-    # @login_required
     def get(self, request, username):
-        return render(request, 'users/profile.html', {'author': CustomUser.objects.get(username=username)})
+        author = get_object_or_404(CustomUser, username=username)
+        projects = author.project_set.all()
+        return render(request, 'users/profile.html', {'author': author, 'projects': projects})
+        # return render(request, 'users/profile.html', {'author': CustomUser.objects.get(username=username)})
 
 
-class ProfileEditView(View):
+class ProfileEditView(LoginRequiredMixin, View):
 
     def get(self, request, username):
        
@@ -69,8 +73,6 @@ class ProfileEditView(View):
             fmirror = form.save(commit=False)
             fmirror.user = request.user
             fmirror.save()
-            
-            
             messages.success(request, f'Your Profile has been updated !')
             
         return render(request, 'users/profile_edit.html',{'author': CustomUser.objects.get(username=username), 'form': form})

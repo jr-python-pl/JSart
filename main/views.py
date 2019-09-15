@@ -124,7 +124,7 @@ class AddProjectView(LoginRequiredMixin, View):
             fmirror.user = request.user
             fmirror.save()
             messages.success(request, f'Your new project has been added')
-            #return redirect(reverse('main:add_project'))    # messages must be on tamplate!
+            return redirect(reverse('main:add_project'))
         return render(request,'main/add_project.html',{'form':form})
 
 
