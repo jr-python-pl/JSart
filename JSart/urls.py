@@ -6,7 +6,8 @@ from django.conf import settings
 from django.urls import path, include
 from users import views as users_views
 from django.contrib.auth import views as auth_views
-
+from django.conf.urls.i18n import i18n_patterns
+from django.utils.translation import gettext_lazy as _
 
 
 urlpatterns = [
