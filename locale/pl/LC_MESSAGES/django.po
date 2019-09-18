@@ -1,0 +1,309 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-09-12 22:13+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
+"%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
+"%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+
+#: JSart/settings.py:64
+msgid "English"
+msgstr "Angielski"
+
+#: JSart/settings.py:65
+msgid "Polish"
+msgstr "Polski"
+
+#: main/forms.py:15
+msgid "Subject"
+msgstr "Tytuł"
+
+#: main/forms.py:16
+msgid "Message"
+msgstr "Wiadomość"
+
+#: main/models.py:8
+msgid "Untitled"
+msgstr "Bez Tytułu"
+
+#: main/models.py:8
+msgid "Title"
+msgstr "Tytuł :"
+
+#: main/models.py:9
+msgid "description"
+msgstr "kilka słów o projektcie"
+
+#: main/models.py:10
+msgid "script body"
+msgstr "Twój skrypt"
+
+#: main/models.py:11
+msgid "thumbnail"
+msgstr "miniaturka"
+
+#: main/templates/main/about.html:11
+msgid "Java Script art Innovating Gui and games , interactive media art , "
+msgstr ""
+"Innowacyjne gry i interfejsy uzytkowanika , interaktywna sztuka nowych mediów"
+
+#: main/templates/main/about.html:13
+msgid "JS as new \"must have\" skill in modern art and design"
+msgstr " Java script jako narzędzie dla współczesnych artystów i designerów"
+
+#: main/templates/main/add_project.html:24
+msgid "Add new Project ...."
+msgstr "Dodaj nowy projekt"
+
+#: main/templates/main/add_project.html:30
+msgid "Add new one ..."
+msgstr "Dodaj nowy projekt"
+
+#: main/templates/main/authors.html:11
+msgid "Authors of JS code"
+msgstr "Autorzy ..."
+
+#: main/templates/main/base.html:60
+msgid "Home"
+msgstr "Strona główna"
+
+#: main/templates/main/base.html:61
+msgid "Projects"
+msgstr "Projekty"
+
+#: main/templates/main/base.html:62
+msgid "Authors"
+msgstr "Autorzy"
+
+#: main/templates/main/base.html:63
+msgid "Ranking"
+msgstr "Ranking"
+
+#: main/templates/main/base.html:64
+msgid "Contact"
+msgstr "Kontakt"
+
+#: main/templates/main/base.html:65
+msgid "About"
+msgstr "JSart"
+
+#: main/templates/main/base.html:68
+msgid "Profile"
+msgstr "Profil"
+
+#: main/templates/main/base.html:71
+msgid "Logout"
+msgstr "Wyloguj"
+
+#: main/templates/main/base.html:77
+msgid "Login"
+msgstr "Zaloguj"
+
+#: main/templates/main/base.html:78
+msgid "Sign in"
+msgstr "Rejestracja"
+
+#: main/templates/main/contact.html:12
+msgid "Contact us ..."
+msgstr "Kontakt ..."
+
+#: main/templates/main/contact.html:17
+msgid "Send Message"
+msgstr "Wyślij Wiadomość"
+
+#: main/templates/main/portfolio.html:20
+msgid "Title :"
+msgstr "Tytuł :"
+
+#: main/templates/main/portfolio.html:30
+msgid "Run"
+msgstr "Zobacz"
+
+#: main/templates/main/portfolio.html:32
+msgid "Author :"
+msgstr "Autor"
+
+#: main/templates/main/project_view.html:42
+msgid "Your vote was sent"
+msgstr "Twoja ocena została wysłana.."
+
+#: main/templates/main/project_view.html:50
+msgid "Rate this project"
+msgstr "Oceń projekt"
+
+#: ranking/templates/ranking/ranking.html:13
+msgid "Top 10 Projects"
+msgstr "10 najwyżej ocenionych projektów"
+
+#: ranking/templates/ranking/ranking.html:16
+msgid "Author"
+msgstr "Autor"
+
+#: ranking/templates/ranking/ranking.html:19
+msgid "Project"
+msgstr "Projekt"
+
+#: users/models.py:15
+msgid "email adress"
+msgstr "adres email"
+
+#: users/models.py:16
+msgid "Few words about you..."
+msgstr "Kilka słów o Tobie..."
+
+#: users/models.py:17
+msgid "photo"
+msgstr "foto"
+
+#: users/templates/users/login.html:12
+msgid "Login please to enjoy"
+msgstr "Zaloguj się aby korzystać z"
+
+#: users/templates/users/login.html:13
+msgid "full feature web app!"
+msgstr "pełni możliwości aplikacji"
+
+#: users/templates/users/login.html:22 users/templates/users/register.html:29
+msgid "Log in"
+msgstr "Zaloguj się"
+
+#: users/templates/users/login.html:26
+msgid "Forget Password?"
+msgstr "Zapomniałeś hasła"
+
+#: users/templates/users/login.html:27
+msgid "Reset your Password"
+msgstr "Resetuj hasło"
+
+#: users/templates/users/login.html:30
+msgid "Need An Account?"
+msgstr "Chcesz założyć konto ?"
+
+#: users/templates/users/login.html:31
+msgid "Register"
+msgstr "Zarejstruj"
+
+#: users/templates/users/logout.html:10
+msgid "You have been logged out"
+msgstr "Zostałeś wylogowany"
+
+#: users/templates/users/logout.html:15
+msgid "Log In Again"
+msgstr "Zaloguj się"
+
+#: users/templates/users/password_change.html:12
+#: users/templates/users/password_reset_confirm.html:12
+msgid "Change Your Password"
+msgstr "Zmień hasło"
+
+#: users/templates/users/password_change.html:19
+#: users/templates/users/password_reset_confirm.html:18
+msgid "Change password"
+msgstr "Zmień"
+
+#: users/templates/users/password_change_done.html:12
+msgid "Your password was successfully updated!"
+msgstr "Twoje hasło zostało zmienione!"
+
+#: users/templates/users/password_reset_complete.html:11
+msgid "Password Reset Complete"
+msgstr "Twoje hasło zostało zmienione"
+
+#: users/templates/users/password_reset_complete.html:15
+msgid "Your password has been set. You may go ahead and"
+msgstr "Twoje hasło zostało zmienione"
+
+#: users/templates/users/password_reset_complete.html:15
+msgid "log in"
+msgstr "Możesz się zalogować ..."
+
+#: users/templates/users/password_reset_complete.html:17
+#: users/templates/users/password_reset_done.html:19
+msgid ""
+"If you don't receive an email, please make sure you've entered the address "
+"you registered with,"
+msgstr ""
+"Jeśli nie dostałeś wiadomości, upewnij się że podałaś poprawny adres email"
+
+#: users/templates/users/password_reset_confirm.html:25
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used."
+msgstr "Wystąpił błąd ..."
+
+#: users/templates/users/password_reset_confirm.html:26
+msgid "Please request a new password reset."
+msgstr "Spróbuj ponownie ."
+
+#: users/templates/users/password_reset_done.html:11
+msgid "Password Reset Info"
+msgstr "Informacje o resecie hasła"
+
+#: users/templates/users/password_reset_done.html:15
+msgid ""
+"We've emailed you instructions for setting your password, if an account "
+"exists with the email you entered."
+msgstr "Pod podany adres email została wysłana instrukcja resetu hasła"
+
+#: users/templates/users/password_reset_done.html:16
+msgid "You should receive them shortly."
+msgstr "wkrótce otrzymasz wiadomość"
+
+#: users/templates/users/password_reset_done.html:20
+msgid "and check your spam folder."
+msgstr "Sprawdź folder spam w swojej skrzynce emailowej"
+
+#: users/templates/users/password_reset_form.html:12
+msgid "Reset Password"
+msgstr "Zmień hasło"
+
+#: users/templates/users/password_reset_form.html:21
+msgid "Reset"
+msgstr "Zmień"
+
+#: users/templates/users/profile.html:10
+#: users/templates/users/profile_edit.html:11
+msgid "Add new project"
+msgstr "Dodaj nowy projekt"
+
+#: users/templates/users/profile.html:11
+msgid "Edit Profile"
+msgstr "Edytuj Profil"
+
+#: users/templates/users/profile_edit.html:20
+msgid "Change Password"
+msgstr "Zmień hasło"
+
+#: users/templates/users/profile_edit.html:25
+msgid "Update"
+msgstr "Aktualizuj"
+
+#: users/templates/users/register.html:12
+msgid "Register to publish your work,"
+msgstr "Aby brać udział w konkursach i publikować pracę."
+
+#: users/templates/users/register.html:13
+msgid "Be able to join contests!"
+msgstr "Zarejestruj się !"
+
+#: users/templates/users/register.html:22
+msgid "Register now"
+msgstr "Zarejestruj"
+
+#: users/templates/users/register.html:29
+msgid "Already Have An Account?"
+msgstr "Posiadasz konto ?"

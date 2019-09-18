@@ -1,6 +1,6 @@
-<!doctype html>
-
 {% load static %}
+{% load i18n %}
+<!doctype html>
 
 <html>
 
@@ -55,28 +55,28 @@
 
          <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mr-auto">
-               <li class="nav-item"><a class="nav-link" href="{% url 'main:home' %}">Home</a></li>
-               <li class="nav-item"><a class="nav-link" href="{% url 'main:portfolio' %}">Projects</a></li>
-               <li class="nav-item"><a class="nav-link" href="{% url 'main:authors'  %}">Authors</a></li>
-               <li class="nav-item"><a class="nav-link" href="{% url 'ranking:ranking' %}">Ranking</a></li>
-               <li class="nav-item"><a class="nav-link" href="{% url 'main:contact' %}">Contact</a></li>
-               <li class="nav-item"><a class="nav-link" href="{% url 'main:about' %}">About</a></li>
+               <li class="nav-item"><a class="nav-link" href="{% url 'main:home' %}">{% trans 'Home' %}</a></li>
+               <li class="nav-item"><a class="nav-link" href="{% url 'main:portfolio' %}">{% trans 'Projects' %}</a>
+               </li>
+               <li class="nav-item"><a class="nav-link" href="{% url 'main:authors'  %}">{% trans 'Authors' %}</a></li>
+               <li class="nav-item"><a class="nav-link" href="{% url 'ranking:ranking' %}">{% trans 'Ranking' %}</a>
+               </li>
+               <li class="nav-item"><a class="nav-link" href="{% url 'main:contact' %}">{% trans 'Contact' %}</a></li>
+               <li class="nav-item"><a class="nav-link" href="{% url 'main:about' %}">{% trans 'About' %}</a></li>
 
                {% if request.user.is_authenticated %}
-               <li class="nav-item"><a class="nav-link" href="{% url 'profile' user.username %}">Profile</a></li>
+               <li class="nav-item"><a class="nav-link"
+                     href="{% url 'profile' user.username %}">{% trans 'Profile' %}</a></li>
                <li class="nav-item">
                   <span class="ml-lg-5 small">{{ request.user }} /</span> <a class="nav-link small"
-                     href="{% url 'logout' %}">
-                     Log
-                     out </a>
+                     href="{% url 'logout' %}">{% trans 'Logout' %}</a>
                </li>
 
 
                {% else %}
                <li class="nav-item">
-                  <a class="nav-link small" href="{% url 'login' %}">Login</a>
-                  <span>/</span> <a class="nav-link small" href="{% url 'register' %}">Sign
-                     in</a>
+                  <a class="nav-link small" href="{% url 'login' %}">{% trans 'Login' %}</a>
+                  <span>/</span> <a class="nav-link small" href="{% url 'register' %}">{% trans 'Sign in' %}</a>
                </li>
 
                {% endif %}
@@ -111,6 +111,7 @@
    <!-- Bootstrap 4 -->
    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
       integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+   <script src="https://code.jquery.com/jquery-migrate-1.4.1.min.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
       integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
    </script>
@@ -119,9 +120,11 @@
    </script>
    <!--  -->
 
+   <script src="{% static 'main/js/jquery.shuffle.min.js' %}"></script>
    <script src="{% static 'main/js/menu-color.js' %}"></script>
    <script src="{% static 'main/js/modernizr.js' %}"></script>
    <script src="{% static 'main/js/script.js' %}"></script>
+   <script src="{% static 'main/js/code.js' %}"></script>
 
 </body>
 

@@ -44,6 +44,7 @@ class ProjectView(View):
 
     def post(self, request, id):
         project1 = Project.objects.get(id=id)
+        vote = False
         
         '''
          lines below to check if there is one or more rating given 
@@ -72,7 +73,7 @@ class ProjectView(View):
             project1.average_rating = project1.mean_method()
             project1.save()
 
-        vote = True
+            vote = True
         return render(request, 'main/project_view.html', {'projects': Project.objects.get(id=id), 'vote': vote , 'user_vote':user_vote})
 
 
@@ -106,7 +107,7 @@ class SuccessView(View):
 class AboutView(View):
 
     def get(self, request):
-        return render(request, 'main/contact.html')
+        return render(request, 'main/about.html')
 
 
 class AddProjectView(LoginRequiredMixin, View):
@@ -123,7 +124,7 @@ class AddProjectView(LoginRequiredMixin, View):
             fmirror.user = request.user
             fmirror.save()
             messages.success(request, f'Your new project has been added')
-            return redirect(reverse('main:add_project'))    # messages must be on tamplate!
+            return redirect(reverse('main:add_project'))
         return render(request,'main/add_project.html',{'form':form})
 
 
