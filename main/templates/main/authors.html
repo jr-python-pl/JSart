@@ -6,18 +6,19 @@
 {% block content %}
 
 <section>
-    <div class="container text-center">
+    <div class="container text-center mb-5">
 
         <h1 class="section-header display-6">{% trans 'Authors of JS code' %} </h1>
         <br />
         <div class="authors-container">
 
             {% for author in authors %}
-            <div class="flex-author m-3">
+            <div class="flex-author m-3 hidden-author">
 
                 {% if author.image %}
 
-                <div class='author-photo'><img alt="author photo" src="{{ author.image.url}}" /></div>
+                <div class='author-photo'><img alt="author photo" class="author-img" src="{{ author.image.url}}" />
+                </div>
 
                 {% else %}
 
