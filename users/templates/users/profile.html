@@ -4,42 +4,42 @@
 {% block content %}
 
 <section>
-    <div class="container">
+    <div class="container mb-5">
         <div class="col-lg-6 col-md-10 col-12">
             {% if author.username == user.username %}
-                <h3><a class="btn btn-outline-warning"
-                        href=" {% url 'main:add_project' %} ">{% trans 'Add new project' %}</a></h3>
-                <h3><a class="btn btn-outline-warning"
-                        href=" {% url 'profile_edit' author.username %} ">{% trans 'Edit Profile' %}</a> </h3>
-                <br>
+            <h3><a class="btn btn-outline-warning"
+                    href=" {% url 'main:add_project' %} ">{% trans 'Add new project' %}</a></h3>
+            <h3><a class="btn btn-outline-warning"
+                    href=" {% url 'profile_edit' author.username %} ">{% trans 'Edit Profile' %}</a> </h3>
+            <br>
             {% endif %}
             {{user.username}}
             {% if user.image %}
-                <p><img alt="author photo" src="{{ user.image.url }}" height="225" /></p>
+            <p><img alt="author photo" src="{{ user.image.url }}" height="225" /></p>
             {% else %}
-                <p><img src="{% static 'main/img/default_user_pic.jpeg' %}" alt="user pic"></p>
+            <p><img src="{% static 'main/img/default_user_pic.jpeg' %}" alt="user pic"></p>
             {% endif %}
             {{author.email}}<br>
             {{author.cv}}
             <p>
 
-            <!-- LIST OF AUTHOR'S PROJECTS HERE -->
-            <ul class="list-group"> Projects:
-                {% if projects %}
+                <!-- LIST OF AUTHOR'S PROJECTS HERE -->
+                <ul class="list-group"> Projects:
+                    {% if projects %}
                     {% for project in projects %}
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            {{ project.title }}
-                            <span>
-                                <a href="EDIT_PROJECT_PATH_HERE" class="badge badge-primary badge-pill text-white">Edit</a>
-                                <a href="DELETE_PATH_HERE" class="badge badge-danger badge-pill text-white">x</a>
-                            </span>
-                        </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        {{ project.title }}
+                        <span>
+                            <a href="EDIT_PROJECT_PATH_HERE" class="badge badge-primary badge-pill text-white">Edit</a>
+                            <a href="DELETE_PATH_HERE" class="badge badge-danger badge-pill text-white">x</a>
+                        </span>
+                    </li>
                     {% endfor %}
-                {% else %}
+                    {% else %}
                     <p class="small"> Wygląda na to, że nie ma jeszcze żadnego projektu. </p>
-                {% endif %}
+                    {% endif %}
 
-            </ul>
+                </ul>
 
         </div>
 
