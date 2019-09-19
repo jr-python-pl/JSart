@@ -56,7 +56,6 @@ class ProfileView(LoginRequiredMixin, View):
         author = get_object_or_404(CustomUser, username=username)
         projects = author.project_set.all()
         return render(request, 'users/profile.html', {'author': author, 'projects': projects})
-        # return render(request, 'users/profile.html', {'author': CustomUser.objects.get(username=username)})
 
 
 class ProfileEditView(LoginRequiredMixin, View):
@@ -64,8 +63,11 @@ class ProfileEditView(LoginRequiredMixin, View):
     def get(self, request, username):
        
         form = ProfileEditForm(instance=request.user)
-        return render(request, 'users/profile_edit.html',
-                      {'author': CustomUser.objects.get(username=username), 'form': form})
+        author = CustomUser.objects.get(username=username)
+        if request.user == author:
+            return render(request, 'users/profile_edit.html', {'author': author, 'form': form})
+        else:
+            return redirect(reverse('profile', kwargs={'username': request.user}))
 
     def post(self, request, username):
         form = ProfileEditForm(request.POST, request.FILES,instance=request.user)
