@@ -27,13 +27,19 @@
                 <ul class="list-group"> Projects:
                     {% if projects %}
                     {% for project in projects %}
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        {{ project.title }}
-                        <span>
-                            <a href="EDIT_PROJECT_PATH_HERE" class="badge badge-primary badge-pill text-white">Edit</a>
-                            <a href="DELETE_PATH_HERE" class="badge badge-danger badge-pill text-white">x</a>
-                        </span>
-                    </li>
+
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            {{ project.title }}
+                            {% if author.username == user.username %}
+                                <span>
+                                    <a href="{% url 'profile_edit' author.username %}" class="badge badge-primary badge-pill text-white">
+                                        {% trans 'Edit' %}</a>
+<!--                                    todo - url delete_project-->
+                                    <a href="DELETE_PATH_HERE" class="badge badge-danger badge-pill text-white">x</a>
+                                </span>
+                            {% endif %}
+                        </li>
+
                     {% endfor %}
                     {% else %}
                     <p class="small"> Wygląda na to, że nie ma jeszcze żadnego projektu. </p>
