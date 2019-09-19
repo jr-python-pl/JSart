@@ -770,6 +770,7 @@ a:visited {
     min-height: 200px;
     padding: 3px;
     overflow: hidden;
+    transition: .5s;
 }
 
 .author-photo {
@@ -816,6 +817,14 @@ a:visited {
     height: 36px;
     background-color: white;
 
+}
+
+.hidden-author {
+    transform: translateX(100vw);
+}
+
+.hidden-author:nth-child(odd) {
+    transform: translateX(-100vw);
 }
 
 /* @media (orientation:landscape) { */
@@ -919,6 +928,20 @@ form {
 
 .alert-danger li {
     color: rgba(100, 0, 0);
+}
+
+/* Projects */
+
+.project {
+    transform: scale(0) translateY(100vh);
+    transform-origin: bottom;
+    opacity: 0;
+    transition: transform .8s ease-out, opacity .5s .2s ease-in-out;
+}
+
+.show-project {
+    transform: scale(1) translateY(0);
+    opacity: 1;
 }
 
 .projectObject {

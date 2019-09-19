@@ -6,7 +6,7 @@
 
 <section>
 
-  <div class="container text-center">
+  <div class="container text-center mb-5">
 
     <h1 class="section-header display-6">Projects</h1>
     <br />
@@ -14,7 +14,7 @@
     <div class="row">
 
       {% for project in projects %}
-      <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="col-sm-6 col-md-4 col-lg-3 project">
         <div class="card my-3">
           <div class=" card-header">
             <h6><small class="text-muted">{% trans 'Title :' %}</small> {{project.title}}</h6>
