@@ -82,39 +82,38 @@
                {% endif %}
 
 
-
                {% comment %} language form ----------------------------------- {% endcomment %}
-               
-               
+
+
                <form action="{% url 'main:home' %}" method="post">{% csrf_token %}
-    <input name="next" type="hidden" value="{{ 'main:home' }}">
-    <select name="language">
-        {% get_current_language as LANGUAGE_CODE %}
-        {% get_available_languages as LANGUAGES %}
-        {% get_language_info_list for LANGUAGES as languages %}
-        {% for language in languages %}
-            <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
-                {{ language.name_local }} ({{ language.code }})
-            </option>
-        {% endfor %}
-    </select>
-    <input type="submit" value="Go">
-</form>
-               
+                  <input name="next" type="hidden" value="{{ 'main:home' }}">
+                  <select name="language">
+                     {% get_current_language as LANGUAGE_CODE %}
+                     {% get_available_languages as LANGUAGES %}
+                     {% get_language_info_list for LANGUAGES as languages %}
+                     {% for language in languages %}
+                     <option value="{{ language.code }}" {% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                        {{ language.name_local }} ({{ language.code }})
+                     </option>
+                     {% endfor %}
+                  </select>
+                  <input type="submit" value="Go">
+               </form>
+
                {% comment %} end language form --------------------------------------------- {% endcomment %}
-
-
 
             </ul>
          </div>
       </div>
    </nav>
 
-   <!-- Successfull registration message !!!! message wchodzi na logo, trzeba przesunąć na środek albo w prawo-->
    {% if messages %}
    {% for message in messages %}
-   <div class="alert alert-{{ message.tags }}">
+   <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
       {{ message }}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+         <span aria-hidden="true">&times;</span>
+      </button>
    </div>
    {% endfor %}
    {% endif %}
