@@ -1,5 +1,5 @@
 from django import forms as main_forms
-from django.core.validators import EmailValidator, URLValidator
+# from django.core.validators import EmailValidator, URLValidator
 from main.models import Project
 from django.utils.translation import ugettext_lazy as _
 
@@ -7,7 +7,7 @@ from django.utils.translation import ugettext_lazy as _
 class AddProjectForm(main_forms.ModelForm):
     class Meta:
         model = Project
-        fields = ['title','thumbnail','description','body']
+        fields = ['title', 'thumbnail', 'description', 'body']
 
 
 class ContactForm(main_forms.Form):
