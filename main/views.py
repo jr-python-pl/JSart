@@ -17,15 +17,17 @@ from ranking.models import Rating
 
 
 class Home(View):
-
+    
     def get(self, request):
+        
         return render(request, 'main/home.html')
     def post(self, request):
         
+        path = request.POST.get('next')
         user_language = request.POST.get('language')
         translation.activate(user_language)
         request.session[translation.LANGUAGE_SESSION_KEY] = user_language
-        return render(request, 'main/home.html')
+        return redirect(path)
 
 
 class AuthorsView(View):
