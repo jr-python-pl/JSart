@@ -5,6 +5,8 @@ from django.views import View
 from django.http import HttpResponse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.conf import settings
+from django.utils import translation
 
 from users.models import CustomUser
 from main.models import Project
@@ -15,9 +17,17 @@ from ranking.models import Rating
 
 
 class Home(View):
-
+    
     def get(self, request):
+        
         return render(request, 'main/home.html')
+    def post(self, request):
+        
+        path = request.POST.get('next')
+        user_language = request.POST.get('language')
+        translation.activate(user_language)
+        request.session[translation.LANGUAGE_SESSION_KEY] = user_language
+        return redirect(path)
 
 
 class AuthorsView(View):
@@ -39,7 +49,7 @@ class RunProjectScript(View):
 class ProjectView(View):
 
     def get(self, request, id):
-        form = RatingForm()
+        form = RatingForm(auto_id=False)
         return render(request, 'main/project_view.html',{'projects': Project.objects.get(id=id), 'form' : form})
 
     def post(self, request, id):
@@ -108,6 +118,7 @@ class AboutView(View):
 
     def get(self, request):
         return render(request, 'main/about.html')
+    
 
 
 class AddProjectView(LoginRequiredMixin, View):
