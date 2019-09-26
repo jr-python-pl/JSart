@@ -49,7 +49,7 @@ class RunProjectScript(View):
 class ProjectView(View):
 
     def get(self, request, id):
-        form = RatingForm()
+        form = RatingForm(auto_id=False)
         return render(request, 'main/project_view.html',{'projects': Project.objects.get(id=id), 'form' : form})
 
     def post(self, request, id):
